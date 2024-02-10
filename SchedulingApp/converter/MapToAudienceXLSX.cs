@@ -15,4 +15,13 @@ public class MapToAudienceXLSX
             StudentNumber = audience.StudentNumber
         };
     }
+    public static List<AudienceXLSX> ToAudienceXLSXes(List<Audience> audiences)
+    {
+        List<AudienceXLSX> list = [];
+        foreach (Audience audience in audiences)
+        {
+            list.Add(ToAudienceXLSX(audience));
+        }
+        return list;
+    }
 }

@@ -16,4 +16,13 @@ public class MapToWeekXLSX
             Year = week.Semester.Year
         };
     }
+    public static List<WeekXLSX> ToWeekXLSXes(List<Week> weeks)
+    {
+        List<WeekXLSX> list = [];
+        foreach (Week week in weeks)
+        {
+            list.Add(ToWeekXLSX(week));
+        }
+        return list;
+    }
 }
