@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchedulingApp.view.saveData"
         mc:Ignorable="d"
-        Title="SubjectWindow" Height="450" Width="800">
+        Title="SubjectWindow" Height="550" Width="1100">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Данные о предмете" Style="{StaticResource basicLabel}" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Название предмета" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Количество лекционных часов" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Количество практических часов" Style="{StaticResource BasicTextBlock}" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Количество консультационных часов" Style="{StaticResource BasicTextBlock}" Grid.Row="4" Grid.Column="0"/>
+        <TextBlock Text="Количество общих часов" Style="{StaticResource BasicTextBlock}" Grid.Row="5" Grid.Column="0"/>
+        <TextBlock Text="Тип аттестации" Style="{StaticResource BasicTextBlock}" Grid.Row="6" Grid.Column="0"/>
+        <TextBox Text="{Binding SubjectName}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Text="{Binding LectureHours}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Text="{Binding PracticHours}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="3" Grid.Column="1"/>
+        <TextBox Text="{Binding ConsultationHours}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="4" Grid.Column="1"/>
+        <TextBox Text="{Binding TotalHours}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="5" Grid.Column="1"/>
+        <TextBox Text="{Binding TypeOfCertification}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="6" Grid.Column="1"/>
+        <Button Content="Назад" Click="GoBackClick" Style="{StaticResource NavButton}" Grid.Row="7" Grid.Column="0"/>
+        <Button Content="Сохранить" Click="SaveClick" Style="{StaticResource NavButton}" Grid.Row="7" Grid.Column="1"/>
     </Grid>
 </Window>

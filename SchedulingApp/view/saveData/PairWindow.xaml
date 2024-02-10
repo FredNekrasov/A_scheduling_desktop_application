@@ -7,6 +7,41 @@
         mc:Ignorable="d"
         Title="PairWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Данные о паре" Style="{StaticResource basicLabel}" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Предмет" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Преподаватель" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Группа" Style="{StaticResource BasicTextBlock}" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Аудитория" Style="{StaticResource BasicTextBlock}" Grid.Row="4" Grid.Column="0"/>
+        <ComboBox Text="{Binding Subject.SubjectName}" SelectedItem="{Binding SubjectName}" Width="350" Style="{StaticResource BasicComboBox}" Grid.Row="1" Grid.Column="1"/>
+        <ComboBox Width="350" Text="{Binding Teacher}" SelectedItem="{Binding Teacher.Surname}" Style="{StaticResource BasicComboBox}" Grid.Row="2" Grid.Column="1">
+            <ComboBoxItem Height="100">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Column="0"/>
+                    <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Column="1"/>
+                    <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Column="2"/>
+                </Grid>
+            </ComboBoxItem>
+        </ComboBox>
+        <ComboBox Text="{Binding Group.ShortNumber}" SelectedItem="{Binding ShortNumber}" Width="350" Style="{StaticResource BasicComboBox}" Grid.Row="3" Grid.Column="1"/>
+        <ComboBox Text="{Binding Audience.AudienceNumber}" SelectedItem="{Binding AudienceNumber}" Width="350" Style="{StaticResource BasicComboBox}" Grid.Row="4" Grid.Column="1"/>
+        <Button Content="Назад" Click="GoBackClick" Style="{StaticResource NavButton}" Grid.Row="5" Grid.Column="0"/>
+        <Button Content="Сохранить" Click="SaveClick" Style="{StaticResource NavButton}" Grid.Row="5" Grid.Column="1"/>
     </Grid>
 </Window>

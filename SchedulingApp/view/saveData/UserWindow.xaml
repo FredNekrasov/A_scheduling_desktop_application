@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="UserWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Данные о пользователе" Style="{StaticResource basicLabel}" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Имя пользователя" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Пароль" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Почта" Style="{StaticResource BasicTextBlock}" Grid.Row="3" Grid.Column="0"/>
+        <TextBox Text="{Binding UserName}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Text="{Binding Password}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Text="{Binding Email}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="3" Grid.Column="1"/>
+        <Button Content="Назад" Click="GoBackClick" Style="{StaticResource NavButton}" Grid.Row="4" Grid.Column="0"/>
+        <Button Content="Сохранить" Click="SaveClick" Style="{StaticResource NavButton}" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </Window>

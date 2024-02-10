@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="AudienceTypeWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Данные о типе аудитории" Style="{StaticResource basicLabel}" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Тип аудитории" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Описание аудитории" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+        <TextBox Text="{Binding TypeName}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Text="{Binding Description}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="2" Grid.Column="1"/>
+        <Button Content="Назад" Click="GoBackClick" Style="{StaticResource NavButton}" Grid.Row="3" Grid.Column="0"/>
+        <Button Content="Сохранить" Click="SaveClick" Style="{StaticResource NavButton}" Grid.Row="3" Grid.Column="1"/>
     </Grid>
 </Window>
