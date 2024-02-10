@@ -1,6 +1,6 @@
 ﻿namespace Model.entities;
 
-public class Group
+public class Squad
 {
     public int ID { get; set; }
     public string GroupNumber { get; set; } = string.Empty;
