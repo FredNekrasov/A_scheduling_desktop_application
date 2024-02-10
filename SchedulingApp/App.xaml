@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:SchedulingApp"
              StartupUri="SchedulingApp.view.MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\view\styles\saveWindowsStyles\StyleForLabels.xaml"/>
+                <ResourceDictionary Source="\view\styles\saveWindowsStyles\StyleForTextBoxes.xaml"/>
+                <ResourceDictionary Source="\view\styles\saveWindowsStyles\StyleForComboBox.xaml"/>
+                <ResourceDictionary Source="\view\styles\StyleForDataGrid.xaml"/>
+                <ResourceDictionary Source="\view\styles\IconButton.xaml"/>
+                <ResourceDictionary Source="\view\styles\saveWindowsStyles\StyleForTextBlock.xaml"/>
+                <ResourceDictionary Source="\view\styles\saveWindowsStyles\StyleForListBox.xaml"/>
+                <ResourceDictionary Source="\view\styles\buttons\NavigationButton.xaml"/>
+                <ResourceDictionary Source="\view\styles\buttons\BasicButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
