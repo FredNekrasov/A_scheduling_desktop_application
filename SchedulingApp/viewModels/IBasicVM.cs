@@ -1,12 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿namespace SchedulingApp.viewModels;
 
-namespace SchedulingApp.viewModels
+interface IBasicVM<T>
 {
-    interface IBasicVM<T>
-    {
-        ObservableCollection<T> List { get; }
-        Task LoadData();
-        Task RemoveAsync(T obj);
-        void Search(string searchValue);
-    }
+    List<T> List { get; }
+    Task LoadData();
+    Task RemoveAsync(T obj);
+    void Search(string searchValue);
 }

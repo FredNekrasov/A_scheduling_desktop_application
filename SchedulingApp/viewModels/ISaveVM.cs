@@ -1,7 +1,6 @@
-﻿namespace SchedulingApp.viewModels
+﻿namespace SchedulingApp.viewModels;
+
+public interface ISaveVM<T>
 {
-    public interface ISaveVM<T>
-    {
-        Task<string> SaveAsync(T obj);
-    }
+    Task<string> SaveAsync(T obj);
 }

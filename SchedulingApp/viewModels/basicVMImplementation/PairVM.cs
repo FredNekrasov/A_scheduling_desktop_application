@@ -1,18 +1,17 @@
 ﻿using Model.entities;
 using Model.repositories;
-using System.Collections.ObjectModel;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
 public class PairVM(IRepository<PairEntity> repository) : IBasicVM<PairEntity>
 {
     private readonly IRepository<PairEntity> _repository = repository;
-    public ObservableCollection<PairEntity> List { get; private set; }
+    public List<PairEntity> List { get; private set; }
     public async Task LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;
-        List = new ObservableCollection<PairEntity>(list);
+        List = list.ToList();
     }
 
     public async Task RemoveAsync(PairEntity obj)
@@ -21,7 +20,7 @@ public class PairVM(IRepository<PairEntity> repository) : IBasicVM<PairEntity>
         await LoadData();
     }
 
-    public void Search(string searchValue) => List = (ObservableCollection<PairEntity>)List
+    public void Search(string searchValue) => List = (List<PairEntity>)List
         .Where(i =>
         i.Subject.SubjectName.StartsWith(searchValue)
         || i.Teacher.Surname.StartsWith(searchValue)

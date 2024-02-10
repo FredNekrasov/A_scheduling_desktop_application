@@ -1,18 +1,17 @@
 ﻿using Model.entities.room;
 using Model.repositories;
-using System.Collections.ObjectModel;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.room;
 
 public class AudienceTypeVM(IRepository<AudienceType> repository) : IBasicVM<AudienceType>
 {
     private readonly IRepository<AudienceType> _repository = repository;
-    public ObservableCollection<AudienceType> List { get; private set; }
+    public List<AudienceType> List { get; private set; }
     public async Task LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;
-        List = new ObservableCollection<AudienceType>(list);
+        List = list.ToList();
     }
 
     public async Task RemoveAsync(AudienceType obj)
@@ -21,6 +20,6 @@ public class AudienceTypeVM(IRepository<AudienceType> repository) : IBasicVM<Aud
         await LoadData();
     }
 
-    public void Search(string searchValue) => List = (ObservableCollection<AudienceType>)List
+    public void Search(string searchValue) => List = (List<AudienceType>)List
             .Where(i => i.TypeName.StartsWith(searchValue) || i.Description.StartsWith(searchValue));
 }

@@ -1,18 +1,17 @@
 ﻿using Model.entities;
 using Model.repositories;
-using System.Collections.ObjectModel;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
 public class SubjectVM(IRepository<Subject> repository) : IBasicVM<Subject>
 {
     private readonly IRepository<Subject> _repository = repository;
-    public ObservableCollection<Subject> List { get; private set; }
+    public List<Subject> List { get; private set; }
     public async Task LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;
-        List = new ObservableCollection<Subject>(list);
+        List = list.ToList();
     }
 
     public async Task RemoveAsync(Subject obj)
@@ -21,7 +20,7 @@ public class SubjectVM(IRepository<Subject> repository) : IBasicVM<Subject>
         await LoadData();
     }
 
-    public void Search(string searchValue) => List = (ObservableCollection<Subject>)List
+    public void Search(string searchValue) => List = (List<Subject>)List
             .Where(i =>
             i.SubjectName == searchValue
             || i.LectureHours.ToString().StartsWith(searchValue)
