@@ -1,6 +1,6 @@
 ﻿namespace Model.validation.audienceTypes;
 
-internal class CheckAudienceTypeData : IDescriptionValidation, ITypeNameValidation
+public class CheckAudienceTypeData : IDescriptionValidation, ITypeNameValidation
 {
     public bool ValidateDescription(string description)
     {
