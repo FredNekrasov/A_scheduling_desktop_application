@@ -45,6 +45,9 @@ public partial class MainWindow : Window
             return;
         }
         MessageBox.Show("Это правильно! Вы успешно прошли", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+        ViewListWindow viewList = new();
+        Close();
+        viewList.Show();
     }
     private void ChangeData(object sender, RoutedEventArgs e) => ReCreateCaptcha();
     private void ReCreateCaptcha()

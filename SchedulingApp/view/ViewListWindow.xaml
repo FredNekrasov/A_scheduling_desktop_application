@@ -1,0 +1,403 @@
+﻿<Window x:Class="SchedulingApp.view.ViewListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SchedulingApp.view"
+        mc:Ignorable="d"
+        Title="ViewListWindow"  Height="500" Width="1100">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Users"  FontFamily="Comic Sans MS">
+                <Grid x:Name="GridUsers">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileUsers" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenUserWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="UsersDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Имя пользователя" Binding="{Binding UserName}" Width="*"/>
+                            <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="*"/>
+                            <DataGridTextColumn Header="Почта" Binding="{Binding Email}" Width="*"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenUserWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteUser">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Teachers" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridTeachers">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileTeachers" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenTeacherWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="TeachersDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" Width="*"/>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" Width="*"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenTeacherWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteTeacher">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Groups" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridGroups">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileGroups" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenGroupWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="GroupsDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Официальный номер группы" Binding="{Binding GroupNumber}" Width="*"/>
+                            <DataGridTextColumn Header="Номер группы" Binding="{Binding ShortNumber}" Width="auto"/>
+                            <DataGridTextColumn Header="Количество студентов" Binding="{Binding StudentNumber}" Width="auto"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenGroupWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteGroup">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Subjects" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridSubjects">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileSubjects" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenSubjectWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="SubjectsDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Наименование предмета" Binding="{Binding SubjectName}" Width="*"/>
+                            <DataGridTextColumn Header="Лекционные часы" Binding="{Binding LectureHours}" Width="Auto"/>
+                            <DataGridTextColumn Header="Практические часы" Binding="{Binding PracticHours}" Width="Auto"/>
+                            <DataGridTextColumn Header="Всего часов" Binding="{Binding TotalHours}" Width="Auto"/>
+                            <DataGridTextColumn Header="Часы на консультацию" Binding="{Binding ConsultationHours}" Width="Auto"/>
+                            <DataGridTextColumn Header="Тип зачета" Binding="{Binding TypeOfCertification}" Width="*"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenSubjectWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteSubject">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Audience types" FontFamily="Comic Sans MS">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileAudienceTypes" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenAudienceTypeWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="AudienceTypesDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Тип кабинета" Binding="{Binding TypeName}" Width="*"/>
+                            <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenAudienceTypeWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteAudienceType">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Audiences" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridAudiences">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileAudiences" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenAudienceWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="AudiencesDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Номер кабинета" Binding="{Binding AudienceNumber}" Width="Auto"/>
+                            <DataGridTextColumn Header="Тип кабинета" Binding="{Binding AudienceType.TypeName}" Width="*"/>
+                            <DataGridTextColumn Header="Количество мест" Binding="{Binding SeatsNumber}" Width="Auto"/>
+                            <DataGridTextColumn Header="Количество студентов" Binding="{Binding StudentNumber}" Width="Auto"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenAudienceWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteAudience">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Semesters" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridSemesters">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileSemesters" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenSemesterWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="SemestersDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Год" Binding="{Binding Year}" Width="*"/>
+                            <DataGridTextColumn Header="Четный семестр" Binding="{Binding IsEven}" Width="*"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenSemesterWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteSemester">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Week" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridWeeks">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileWeek" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenWeekWindow" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="WeeksDG" Style="{StaticResource BasicDG}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Номер недели" Binding="{Binding WeekNumber}" Width="*"/>
+                            <DataGridTextColumn Header="Семестр" Binding="{Binding Semester.IsEven}" Width="*"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Aqua" Click="OpenWeekWindow">
+                                            <Icon:PackIconMaterial Kind="FileEdit" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Background="Red" Click="DeleteWeek">
+                                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource IconButton}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Pairs" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridPairs">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenPairWindow" Grid.Row="1" Grid.Column="1"/>
+                    <ListView x:Name="PairsLV" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Button Content="Изменить" Style="{StaticResource NavButton}" Background="Aqua" Click="OpenPairWindow" Grid.Row="2" Grid.Column="0"/>
+                                    <Button Content="Удалить" Style="{StaticResource NavButton}" Background="Red" Click="DeletePair" Grid.Row="2" Grid.Column="1"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Days" FontFamily="Comic Sans MS">
+                <Grid x:Name="GridDays">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenDayWindow" Grid.Row="1" Grid.Column="1"/>
+                    <ListView x:Name="DaysLV" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Button Content="Изменить" Style="{StaticResource NavButton}" Background="Aqua" Click="OpenDayWindow" Grid.Row="2" Grid.Column="0"/>
+                                    <Button Content="Удалить" Style="{StaticResource NavButton}" Background="Red" Click="DeleteDay" Grid.Row="2" Grid.Column="1"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
