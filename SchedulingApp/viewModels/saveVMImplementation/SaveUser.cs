@@ -1,18 +1,18 @@
 ﻿using Model.entities;
 using Model.repositories;
 using Model.validation.users;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
 public class SaveUser(
-    IRepository<User> repository,
     IValidationUserName validationUserName,
     IValidationPassword validationPassword,
     IValidationEmail validationEmail
 ) : ISaveVM<User>
 {
-    private readonly IRepository<User> _repository = repository;
+    private readonly IRepository<User> _repository = RepositoryModule<User>.GetRepository("Users");
     private readonly IValidationUserName checkUserName = validationUserName;
     private readonly IValidationPassword checkPassword = validationPassword;
     private readonly IValidationEmail checkEmail = validationEmail;

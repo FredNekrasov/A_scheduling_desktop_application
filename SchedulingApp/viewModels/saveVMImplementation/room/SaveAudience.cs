@@ -1,18 +1,18 @@
 ﻿using Model.entities.room;
 using Model.repositories;
 using Model.validation.audiences;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.room;
 
 public class SaveAudience(
-    IRepository<Audience> repository,
     IAudienceNumberValidation audienceNumberValidation,
     ISeatsNumberValidation seatsNumberValidation,
     IStudentNumberValidation studentNumberValidation
 ) : ISaveVM<Audience>
 {
-    private readonly IRepository<Audience> _repository = repository;
+    private readonly IRepository<Audience> _repository = RepositoryModule<Audience>.GetRepository("Audiences");
     private readonly IAudienceNumberValidation _audienceNumberValidation = audienceNumberValidation;
     private readonly ISeatsNumberValidation _seatsNumberValidation = seatsNumberValidation;
     private readonly IStudentNumberValidation _studentNumberValidation = studentNumberValidation;

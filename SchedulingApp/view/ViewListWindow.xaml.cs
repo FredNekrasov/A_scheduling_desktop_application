@@ -71,9 +71,9 @@ public partial class ViewListWindow : Window
     private void GenerateExcelFileGroups(object sender, RoutedEventArgs e) => GenerateExcelFile(_groupVM.List.ToList());
     private void GenerateExcelFileSubjects(object sender, RoutedEventArgs e) => GenerateExcelFile(_subjectVM.List.ToList());
     private void GenerateExcelFileAudienceTypes(object sender, RoutedEventArgs e) => GenerateExcelFile(_audienceTypeVM.List.ToList());
-    private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(_audienceVM.List.ToList());
+    private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToAudienceXLSX.ToAudienceXLSXes(_audienceVM.List.ToList()));
     private void GenerateExcelFileSemesters(object sender, RoutedEventArgs e) => GenerateExcelFile(_semesterVM.List.ToList());
-    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(_weekVM.List.ToList());
+    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes(_weekVM.List.ToList()));
 
     private async void DeleteUser(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_userVM, ((Button)sender).DataContext as User);
     private async void DeleteTeacher(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_teacherVM, ((Button)sender).DataContext as Teacher);

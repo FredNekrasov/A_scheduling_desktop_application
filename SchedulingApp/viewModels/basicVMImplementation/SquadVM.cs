@@ -6,7 +6,7 @@ namespace SchedulingApp.viewModels.basicVMImplementation;
 
 public class SquadVM : IBasicVM<Squad>
 {
-    private readonly IRepository<Squad> _repository = RepositoryModule<Squad>.GetRepository("");
+    private readonly IRepository<Squad> _repository = RepositoryModule<Squad>.GetRepository("Groups");
     public List<Squad> List { get; private set; }
     public async Task LoadData()
     {

@@ -1,18 +1,18 @@
 ﻿using Model.entities;
 using Model.repositories;
 using Model.validation.teachers;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
 public class SaveTeacher(
-    IRepository<Teacher> repository,
     IValidationName validationName,
     IValidationPatronymic validationPatronymic,
     IValidationSurname validationSurname
 ) : ISaveVM<Teacher>
 {
-    private readonly IRepository<Teacher> _repository = repository;
+    private readonly IRepository<Teacher> _repository = RepositoryModule<Teacher>.GetRepository("Teachers");
     private readonly IValidationName _validationName = validationName;
     private readonly IValidationPatronymic _validationPatronymic = validationPatronymic;
     private readonly IValidationSurname _validationSurname = validationSurname;

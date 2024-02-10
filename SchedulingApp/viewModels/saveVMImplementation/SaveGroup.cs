@@ -1,18 +1,18 @@
 ﻿using Model.entities;
 using Model.repositories;
 using Model.validation.groups;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
 public class SaveGroup(
-    IRepository<Squad> repository,
     IValidationGroupNumber validationGN,
     IValidationShortGN validationSGN,
     IValidationStudentNumber validationSN
 ) : ISaveVM<Squad>
 {
-    private readonly IRepository<Squad> _repository = repository;
+    private readonly IRepository<Squad> _repository = RepositoryModule<Squad>.GetRepository("Groups");
     private readonly IValidationGroupNumber validationGroupNumber = validationGN;
     private readonly IValidationShortGN validationShortGN = validationSGN;
     private readonly IValidationStudentNumber validationStudentNumber = validationSN;

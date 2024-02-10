@@ -1,17 +1,14 @@
 ﻿using Model.entities.date;
 using Model.repositories;
 using Model.validation.semesters;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.date;
 
-public class SaveSemester(
-    IRepository<Semester> repository,
-    IIsEvenValidation isEvenValidation,
-    IYearValidation yearValidation
-) : ISaveVM<Semester>
+public class SaveSemester(IIsEvenValidation isEvenValidation, IYearValidation yearValidation) : ISaveVM<Semester>
 {
-    private readonly IRepository<Semester> _repository = repository;
+    private readonly IRepository<Semester> _repository = RepositoryModule<Semester>.GetRepository("Semesters");
     private readonly IIsEvenValidation _isEvenValidation = isEvenValidation;
     private readonly IYearValidation _yearValidation = yearValidation;
     public async Task<string> SaveAsync(Semester obj)

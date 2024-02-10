@@ -6,7 +6,7 @@ namespace SchedulingApp.viewModels.basicVMImplementation;
 
 public class PairVM : IBasicVM<PairEntity>
 {
-    private readonly IRepository<PairEntity> _repository = RepositoryModule<PairEntity>.GetRepository("");
+    private readonly IRepository<PairEntity> _repository = RepositoryModule<PairEntity>.GetRepository("Pairs");
     public List<PairEntity> List { get; private set; }
     public async Task LoadData()
     {

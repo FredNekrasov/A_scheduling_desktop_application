@@ -6,7 +6,7 @@ namespace SchedulingApp.viewModels.basicVMImplementation.date;
 
 public class DayVM : IBasicVM<DayEntity>
 {
-    private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("");
+    private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("Days");
     public List<DayEntity> List { get; private set; }
     public async Task LoadData()
     {

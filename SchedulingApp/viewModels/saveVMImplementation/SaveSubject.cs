@@ -1,12 +1,12 @@
 ﻿using Model.entities;
 using Model.repositories;
 using Model.validation.subjects;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
 public class SaveSubject(
-    IRepository<Subject> repository,
     IConsultationHoursValidation consultationHoursValidation,
     ILectureHoursValidation lectureHoursValidation,
     IPracticeHoursValidation practiceHoursValidation,
@@ -15,7 +15,7 @@ public class SaveSubject(
     ITypeOfCertificationValidation typeOfCertificationValidation
 ) : ISaveVM<Subject>
 {
-    private readonly IRepository<Subject> _repository = repository;
+    private readonly IRepository<Subject> _repository = RepositoryModule<Subject>.GetRepository("Subjects");
     private readonly IConsultationHoursValidation _consultationHoursValidation = consultationHoursValidation;
     private readonly ILectureHoursValidation _lectureHoursValidation = lectureHoursValidation;
     private readonly IPracticeHoursValidation _practiceHoursValidation = practiceHoursValidation;

@@ -6,7 +6,7 @@ namespace SchedulingApp.viewModels.basicVMImplementation.date;
 
 public class WeekVM : IBasicVM<Week>
 {
-    private readonly IRepository<Week> _repository = RepositoryModule<Week>.GetRepository("");
+    private readonly IRepository<Week> _repository = RepositoryModule<Week>.GetRepository("Weeks");
     public List<Week> List { get; private set; }
     public async Task LoadData()
     {

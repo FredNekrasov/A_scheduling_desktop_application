@@ -1,16 +1,14 @@
 ﻿using Model.entities.date;
 using Model.repositories;
 using Model.validation.day;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.date;
 
-public class SaveDay(
-    IRepository<DayEntity> repository,
-    IDayOfWeekValidation dayOfWeekValidation
-) : ISaveVM<DayEntity>
+public class SaveDay(IDayOfWeekValidation dayOfWeekValidation) : ISaveVM<DayEntity>
 {
-    private readonly IRepository<DayEntity> _repository = repository;
+    private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("Days");
     private readonly IDayOfWeekValidation _dayValidation = dayOfWeekValidation;
     public async Task<string> SaveAsync(DayEntity obj)
     {

@@ -1,17 +1,14 @@
 ﻿using Model.entities.room;
 using Model.repositories;
 using Model.validation.audienceTypes;
+using SchedulingApp.stupidDI;
 using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.room;
 
-public class SaveAudienceType(
-    IRepository<AudienceType> repository,
-    ITypeNameValidation typeNameValidation,
-    IDescriptionValidation descriptionValidation
-) : ISaveVM<AudienceType>
+public class SaveAudienceType(ITypeNameValidation typeNameValidation, IDescriptionValidation descriptionValidation) : ISaveVM<AudienceType>
 {
-    private readonly IRepository<AudienceType> _repository = repository;
+    private readonly IRepository<AudienceType> _repository = RepositoryModule<AudienceType>.GetRepository("AudienceTypes");
     private readonly ITypeNameValidation _typeNameValidation = typeNameValidation;
     private readonly IDescriptionValidation _descriptionValidation = descriptionValidation;
     public async Task<string> SaveAsync(AudienceType obj)

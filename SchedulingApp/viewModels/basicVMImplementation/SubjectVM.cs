@@ -6,7 +6,7 @@ namespace SchedulingApp.viewModels.basicVMImplementation;
 
 public class SubjectVM : IBasicVM<Subject>
 {
-    private readonly IRepository<Subject> _repository = RepositoryModule<Subject>.GetRepository("");
+    private readonly IRepository<Subject> _repository = RepositoryModule<Subject>.GetRepository("Subjects");
     public List<Subject> List { get; private set; }
     public async Task LoadData()
     {
