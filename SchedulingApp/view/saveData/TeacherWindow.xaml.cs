@@ -1,12 +1,16 @@
-﻿using System.Windows;
+﻿using Model.entities;
+using System.Windows;
 
 namespace SchedulingApp.view.saveData
 {
     public partial class TeacherWindow : Window
     {
-        public TeacherWindow()
+        private Teacher entity = new();
+        public TeacherWindow(Teacher? selectedItem)
         {
             InitializeComponent();
+            if (selectedItem != null) entity = selectedItem;
+            DataContext = entity;
         }
     }
 }
