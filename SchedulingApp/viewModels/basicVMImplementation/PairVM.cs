@@ -1,11 +1,12 @@
 ﻿using Model.entities;
 using Model.repositories;
+using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
-public class PairVM(IRepository<PairEntity> repository) : IBasicVM<PairEntity>
+public class PairVM : IBasicVM<PairEntity>
 {
-    private readonly IRepository<PairEntity> _repository = repository;
+    private readonly IRepository<PairEntity> _repository = RepositoryModule<PairEntity>.GetRepository("");
     public List<PairEntity> List { get; private set; }
     public async Task LoadData()
     {

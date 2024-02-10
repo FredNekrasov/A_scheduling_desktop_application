@@ -1,11 +1,12 @@
 ﻿using Model.entities;
 using Model.repositories;
+using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
-public class TeacherVM(IRepository<Teacher> repository) : IBasicVM<Teacher>
+public class TeacherVM : IBasicVM<Teacher>
 {
-    private readonly IRepository<Teacher> _repository = repository;
+    private readonly IRepository<Teacher> _repository = RepositoryModule<Teacher>.GetRepository("");
     public List<Teacher> List { get; private set; }
     public async Task LoadData()
     {

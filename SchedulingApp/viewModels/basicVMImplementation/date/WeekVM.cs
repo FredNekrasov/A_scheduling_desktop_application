@@ -1,11 +1,12 @@
 ﻿using Model.entities.date;
 using Model.repositories;
+using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.date;
 
-public class WeekVM(IRepository<Week> repository) : IBasicVM<Week>
+public class WeekVM : IBasicVM<Week>
 {
-    private readonly IRepository<Week> _repository = repository;
+    private readonly IRepository<Week> _repository = RepositoryModule<Week>.GetRepository("");
     public List<Week> List { get; private set; }
     public async Task LoadData()
     {

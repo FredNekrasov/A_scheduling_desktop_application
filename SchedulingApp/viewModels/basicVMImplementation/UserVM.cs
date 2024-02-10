@@ -1,11 +1,12 @@
 ﻿using Model.entities;
 using Model.repositories;
+using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
-public class UserVM(IRepository<User> repository) : IBasicVM<User>
+public class UserVM : IBasicVM<User>
 {
-    private readonly IRepository<User> _repository = repository;
+    private readonly IRepository<User> _repository = RepositoryModule<User>.GetRepository("");
     public List<User> List { get; private set; }
     public async Task LoadData()
     {
