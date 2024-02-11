@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchedulingApp.view.saveData"
         mc:Ignorable="d"
-        Title="PairWindow" Height="450" Width="800">
+        Title="PairWindow" Height="450" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -24,23 +24,25 @@
         <TextBlock Text="Преподаватель" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
         <TextBlock Text="Группа" Style="{StaticResource BasicTextBlock}" Grid.Row="3" Grid.Column="0"/>
         <TextBlock Text="Аудитория" Style="{StaticResource BasicTextBlock}" Grid.Row="4" Grid.Column="0"/>
-        <ComboBox Text="{Binding Subject.SubjectName}" SelectedItem="{Binding SubjectName}" Width="350" Style="{StaticResource BasicComboBox}" Grid.Row="1" Grid.Column="1"/>
-        <ComboBox Width="350" Text="{Binding Teacher}" SelectedItem="{Binding Teacher.Surname}" Style="{StaticResource BasicComboBox}" Grid.Row="2" Grid.Column="1">
-            <ComboBoxItem Height="100">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Column="0"/>
-                    <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Column="1"/>
-                    <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Column="2"/>
-                </Grid>
-            </ComboBoxItem>
+        <ComboBox x:Name="SubjectCB" Text="{Binding Subject.SubjectName}" SelectedItem="{Binding Subject}" DisplayMemberPath="SubjectName" Width="400" Style="{StaticResource BasicComboBox}" Grid.Row="1" Grid.Column="1"/>
+        <ComboBox x:Name="TeacherCB" Width="400" SelectedItem="{Binding Teacher}" Style="{StaticResource BasicComboBox}" Grid.Row="2" Grid.Column="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Surname}" Style="{StaticResource BasicTextBlock}" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource BasicTextBlock}" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Column="2"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox Text="{Binding Group.ShortNumber}" SelectedItem="{Binding ShortNumber}" Width="350" Style="{StaticResource BasicComboBox}" Grid.Row="3" Grid.Column="1"/>
-        <ComboBox Text="{Binding Audience.AudienceNumber}" SelectedItem="{Binding AudienceNumber}" Width="350" Style="{StaticResource BasicComboBox}" Grid.Row="4" Grid.Column="1"/>
+        <ComboBox x:Name="GroupCB" Text="{Binding Group.ShortNumber}" SelectedValue="{Binding Group}" DisplayMemberPath="ShortNumber" Width="400" Style="{StaticResource BasicComboBox}" Grid.Row="3" Grid.Column="1"/>
+        <ComboBox x:Name="AudienceCB" Text="{Binding Audience.AudienceNumber}" SelectedValue="{Binding Audience}" DisplayMemberPath="AudienceNumber" Width="400" Style="{StaticResource BasicComboBox}" Grid.Row="4" Grid.Column="1"/>
         <Button Content="Назад" Click="GoBackClick" Style="{StaticResource NavButton}" Grid.Row="5" Grid.Column="0"/>
         <Button Content="Сохранить" Click="SaveClick" Style="{StaticResource NavButton}" Grid.Row="5" Grid.Column="1"/>
     </Grid>

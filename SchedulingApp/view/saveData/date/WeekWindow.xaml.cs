@@ -10,16 +10,21 @@ namespace SchedulingApp.view.saveData.date
     public partial class WeekWindow : Window
     {
         private readonly ISaveVM<Week> _saveVM;
-        private readonly IBasicVM<Semester> basicVM = new SemesterVM();
+        private readonly IBasicVM<Semester> _semestersBasicVM = new SemesterVM();
         private Week entity = new();
         public WeekWindow(Week? selectedItem)
         {
             InitializeComponent();
+            SetData();
             IWeekNumberValidation weekNumberValidation = new CheckWeekData();
-            Semester.ItemsSource = basicVM.List;
             _saveVM = new SaveWeek(weekNumberValidation);
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
+        }
+        private async void SetData()
+        {
+            await _semestersBasicVM.LoadData();
+            Semester.ItemsSource = _semestersBasicVM.List;
         }
         private async Task<string> Save() => await _saveVM.SaveAsync(entity);
         private void GoBackClick(object sender, RoutedEventArgs e)

@@ -25,7 +25,7 @@
         <TextBlock Text="Количество мест для студентов" Style="{StaticResource BasicTextBlock}" Grid.Row="3" Grid.Column="0"/>
         <TextBlock Text="Количество мест" Style="{StaticResource BasicTextBlock}" Grid.Row="4" Grid.Column="0"/>
         <TextBox Text="{Binding AudienceNumber}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="1" Grid.Column="1"/>
-        <ComboBox Name="AudiencesComboBox" SelectedValue="{Binding AudienceType}" DisplayMemberPath="TypeName" Width="300" Style="{StaticResource BasicComboBox}" Grid.Row="2" Grid.Column="1"/>
+        <ComboBox Name="AudiencesComboBox" Text="{Binding AudienceType.TypeName}" SelectedValue="{Binding AudienceType}" DisplayMemberPath="TypeName" Width="300" Style="{StaticResource BasicComboBox}" Grid.Row="2" Grid.Column="1"/>
         <TextBox Text="{Binding StudentNumber}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="3" Grid.Column="1"/>
         <TextBox Text="{Binding SeatsNumber}" Width="300" Style="{StaticResource basicTextBox}" Grid.Row="4" Grid.Column="1"/>
         <Button Content="Назад" Click="GoBackClick" Style="{StaticResource NavButton}" Grid.Row="5" Grid.Column="0"/>

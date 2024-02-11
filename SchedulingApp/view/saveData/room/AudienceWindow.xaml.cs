@@ -10,18 +10,23 @@ namespace SchedulingApp.view.saveData.room
     public partial class AudienceWindow : Window
     {
         private readonly ISaveVM<Audience> _saveVM;
-        private readonly IBasicVM<AudienceType> basicVM = new AudienceTypeVM();
+        private readonly IBasicVM<AudienceType> _audienceTypesBasicVM = new AudienceTypeVM();
         private Audience entity = new();
         public AudienceWindow(Audience? selectedItem)
         {
             InitializeComponent();
+            SetData();
             IAudienceNumberValidation audienceNumberValidation = new CheckAudienceData();
             ISeatsNumberValidation seatsNumberValidation = new CheckAudienceData();
             IStudentNumberValidation studentNumberValidation = new CheckAudienceData();
-            AudiencesComboBox.ItemsSource = basicVM.List;
             _saveVM = new SaveAudience(audienceNumberValidation, seatsNumberValidation, studentNumberValidation);
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
+        }
+        private async void SetData()
+        {
+            await _audienceTypesBasicVM.LoadData();
+            AudiencesComboBox.ItemsSource = _audienceTypesBasicVM.List;
         }
         private async Task<string> Save() => await _saveVM.SaveAsync(entity);
         private void GoBackClick(object sender, RoutedEventArgs e)
