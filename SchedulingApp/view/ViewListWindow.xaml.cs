@@ -46,6 +46,7 @@ public partial class ViewListWindow : Window
         await _audienceVM.LoadData();
         await _semesterVM.LoadData();
         await _weekVM.LoadData();
+        await _pairVM.LoadData();
         UsersDG.ItemsSource = _userVM.List;
         TeachersDG.ItemsSource = _teacherVM.List;
         SubjectsDG.ItemsSource = _subjectVM.List;
@@ -54,6 +55,7 @@ public partial class ViewListWindow : Window
         SemestersDG.ItemsSource = _semesterVM.List;
         WeeksDG.ItemsSource = _weekVM.List;
         GroupsDG.ItemsSource = _groupVM.List;
+        PairsLV.ItemsSource = _pairVM.List;
     }
     private static void GenerateExcelFile<T>(List<T> list)
     {
@@ -71,9 +73,9 @@ public partial class ViewListWindow : Window
     private void GenerateExcelFileGroups(object sender, RoutedEventArgs e) => GenerateExcelFile(_groupVM.List.ToList());
     private void GenerateExcelFileSubjects(object sender, RoutedEventArgs e) => GenerateExcelFile(_subjectVM.List.ToList());
     private void GenerateExcelFileAudienceTypes(object sender, RoutedEventArgs e) => GenerateExcelFile(_audienceTypeVM.List.ToList());
-    private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToAudienceXLSX.ToAudienceXLSXes(_audienceVM.List.ToList()));
+    private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToAudienceXLSX.ToAudienceXLSXes([.. _audienceVM.List]));
     private void GenerateExcelFileSemesters(object sender, RoutedEventArgs e) => GenerateExcelFile(_semesterVM.List.ToList());
-    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes(_weekVM.List.ToList()));
+    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes([.. _weekVM.List]));
 
     private async void DeleteUser(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_userVM, ((Button)sender).DataContext as User);
     private async void DeleteTeacher(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_teacherVM, ((Button)sender).DataContext as Teacher);

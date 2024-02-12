@@ -342,7 +342,7 @@
                     </Grid.RowDefinitions>
                     <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
                     <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenPairWindow" Grid.Row="1" Grid.Column="1"/>
-                    <ListView x:Name="PairsLV" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
+                    <ListView x:Name="PairsLV" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -354,10 +354,16 @@
                                         <RowDefinition Height="2*"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-
-                                    <Button Content="Изменить" Style="{StaticResource NavButton}" Background="Aqua" Click="OpenPairWindow" Grid.Row="2" Grid.Column="0"/>
-                                    <Button Content="Удалить" Style="{StaticResource NavButton}" Background="Red" Click="DeletePair" Grid.Row="2" Grid.Column="1"/>
+                                    <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                                    <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                                    <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                    <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                                    <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                                    <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                                    <Button Content="Изменить" Style="{StaticResource NavButton}" Background="Aqua" Click="OpenPairWindow" Grid.Row="3" Grid.Column="0"/>
+                                    <Button Content="Удалить" Style="{StaticResource NavButton}" Background="Red" Click="DeletePair" Grid.Row="3" Grid.Column="1"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
