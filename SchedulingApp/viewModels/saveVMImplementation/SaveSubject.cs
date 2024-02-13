@@ -34,7 +34,7 @@ public class SaveSubject(
         result = _consultationHoursValidation.ValidateConultationHours(obj.ConsultationHours);
         if (result == false) errors.AppendLine("Консультационные часы введены неправильно");
         result = _totalHoursValidation.ValidateTotalHours(obj.TotalHours);
-        if (result == false) errors.AppendLine("Общее количество часов введено неправильно");
+        if ((result == false) || (obj.TotalHours != (obj.LectureHours + obj.PracticHours + obj.ConsultationHours))) errors.AppendLine("Общее количество часов введено неправильно");
         result = _typeOfCertificationValidation.ValidateTypeOfCertification(obj.TypeOfCertification);
         if (result == false) errors.AppendLine("Тип аттестации введен неправильно");
         if (errors.Length > 0) return errors.ToString();

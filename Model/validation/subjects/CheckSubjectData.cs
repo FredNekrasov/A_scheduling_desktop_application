@@ -6,15 +6,15 @@ public class CheckSubjectData : ISubjectNameValidation, ILectureHoursValidation,
 {
     public bool ValidateConultationHours(int? consultationHours)
     {
-        if (consultationHours == null || consultationHours <= 0 || consultationHours > 4) return false; else return true;
+        if (consultationHours == null || consultationHours < 0 || consultationHours > 4) return false; else return true;
     }
     public bool ValidateLectureHours(int? lectureHours)
     {
-        if (lectureHours == null || lectureHours <= 0) return false; else return true;
+        if (lectureHours == null || lectureHours < 0) return false; else return true;
     }
     public bool ValidatePracticHours(int? practicHours)
     {
-        if (practicHours == null || practicHours <= 0) return false; else return true;
+        if (practicHours == null || practicHours < 0) return false; else return true;
     }
     public bool ValidateSubjectName(string subjectName)
     {
