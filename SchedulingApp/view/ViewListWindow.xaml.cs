@@ -78,11 +78,8 @@ public partial class ViewListWindow : Window
     private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToAudienceXLSX.ToAudienceXLSXes([.. _audienceVM.List]));
     private void GenerateExcelFileSemesters(object sender, RoutedEventArgs e) => GenerateExcelFile(_semesterVM.List.ToList());
     private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes([.. _weekVM.List]));
-    private void GenerateExcelFilePair(object sender, RoutedEventArgs e)
-    {
-        
-    }
-    private void GenerateExcelFileDay(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes([.. _weekVM.List]));
+    private void GenerateExcelFilePair(object sender, RoutedEventArgs e) => GenerateExcelFile(_pairVM.List);
+    private void GenerateExcelFileDay(object sender, RoutedEventArgs e) => GenerateExcelFile(_dayVM.List);
 
     private async void DeleteUser(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_userVM, ((Button)sender).DataContext as User);
     private async void DeleteTeacher(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_teacherVM, ((Button)sender).DataContext as Teacher);
