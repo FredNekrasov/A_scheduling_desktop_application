@@ -1,9 +1,6 @@
-﻿using Model.entities;
-using Model.entities.date;
-
-namespace Model.entitiesForExcel
+﻿namespace Model.entities.date
 {
-    public class DayData
+    public class DayData//to display data on windows
     {
         public int ID { get; set; }
         public string DayOfWeek { get; set; } = string.Empty;

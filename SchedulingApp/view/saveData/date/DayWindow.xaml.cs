@@ -6,7 +6,6 @@ using Model.validation.day;
 using SchedulingApp.viewModels.saveVMImplementation.date;
 using Model.entities;
 using SchedulingApp.viewModels.basicVMImplementation;
-using Model.entitiesForExcel;
 
 namespace SchedulingApp.view.saveData.date
 {

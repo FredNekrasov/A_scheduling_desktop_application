@@ -1,6 +1,5 @@
 ﻿using Model.entities;
 using Model.entities.date;
-using Model.entitiesForExcel;
 using Model.repositories;
 using SchedulingApp.stupidDI;
 

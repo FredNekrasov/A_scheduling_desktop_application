@@ -11,7 +11,6 @@ using SchedulingApp.view.saveData.date;
 using SchedulingApp.view.saveData.room;
 using SchedulingApp.view.saveData;
 using System.Windows.Controls;
-using Model.entitiesForExcel;
 using SchedulingApp.mappers;
 
 namespace SchedulingApp.view;
