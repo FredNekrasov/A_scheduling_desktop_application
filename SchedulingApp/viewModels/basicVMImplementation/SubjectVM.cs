@@ -15,12 +15,7 @@ public class SubjectVM : IBasicVM<Subject>
         List = list.ToList();
     }
 
-    public async Task RemoveAsync(Subject obj)
-    {
-        await _repository.Delete(obj.ID);
-        await LoadData();
-    }
-
+    public async Task RemoveAsync(Subject obj) => await _repository.Delete(obj.ID);
     public void Search(string searchValue) => List = (List<Subject>)List
             .Where(i =>
             i.SubjectName == searchValue

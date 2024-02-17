@@ -15,12 +15,7 @@ public class WeekVM : IBasicVM<Week>
         List = list.ToList();
     }
 
-    public async Task RemoveAsync(Week obj)
-    {
-        await _repository.Delete(obj.ID);
-        await LoadData();
-    }
-
+    public async Task RemoveAsync(Week obj) => await _repository.Delete(obj.ID);
     public void Search(string searchValue) => List = (List<Week>)List
             .Where(i =>
             i.WeekNumber.ToString().StartsWith(searchValue)

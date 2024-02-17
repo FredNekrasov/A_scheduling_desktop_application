@@ -15,12 +15,7 @@ public class AudienceVM : IBasicVM<Audience>
         List = list.ToList();
     }
 
-    public async Task RemoveAsync(Audience obj)
-    {
-        await _repository.Delete(obj.ID);
-        await LoadData();
-    }
-
+    public async Task RemoveAsync(Audience obj) => await _repository.Delete(obj.ID);
     public void Search(string searchValue) => List = (List<Audience>)List
             .Where(i =>
             i.SeatsNumber.ToString().StartsWith(searchValue)

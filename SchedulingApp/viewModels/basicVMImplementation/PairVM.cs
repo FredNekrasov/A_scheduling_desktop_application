@@ -15,12 +15,7 @@ public class PairVM : IBasicVM<PairEntity>
         List = list.ToList();
     }
 
-    public async Task RemoveAsync(PairEntity obj)
-    {
-        await _repository.Delete(obj.PairID);
-        await LoadData();
-    }
-
+    public async Task RemoveAsync(PairEntity obj) => await _repository.Delete(obj.PairID);
     public void Search(string searchValue) => List = (List<PairEntity>)List
         .Where(i =>
         i.Subject.SubjectName.StartsWith(searchValue)

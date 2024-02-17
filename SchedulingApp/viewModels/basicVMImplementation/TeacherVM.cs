@@ -15,11 +15,7 @@ public class TeacherVM : IBasicVM<Teacher>
         List = list.ToList();
     }
 
-    public async Task RemoveAsync(Teacher obj)
-    {
-        await _repository.Delete(obj.ID);
-        await LoadData();
-    }
+    public async Task RemoveAsync(Teacher obj) => await _repository.Delete(obj.ID);
     public void Search(string searchValue) => List = (List<Teacher>)List
         .Where(i =>
         i.Patronymic.StartsWith(searchValue)

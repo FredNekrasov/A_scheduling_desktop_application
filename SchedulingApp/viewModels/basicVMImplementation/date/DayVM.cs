@@ -69,12 +69,7 @@ public class DayVM : IBasicVM<DayData>
         List = days;
     }
 
-    public async Task RemoveAsync(DayData obj)
-    {
-        await _repository.Delete(obj.ID);
-        await LoadData();
-    }
-
+    public async Task RemoveAsync(DayData obj) => await _repository.Delete(obj.ID);
     public void Search(string searchValue) => List = (List<DayData>)List
            .Where(i =>
            i.DayOfWeek.StartsWith(searchValue) || i.Week.WeekNumber.ToString().StartsWith(searchValue));
