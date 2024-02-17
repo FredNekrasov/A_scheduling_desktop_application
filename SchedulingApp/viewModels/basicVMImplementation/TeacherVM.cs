@@ -14,12 +14,6 @@ public class TeacherVM : IBasicVM<Teacher>
         if (list == null) return;
         List = list.ToList();
     }
-
     public async Task RemoveAsync(Teacher obj) => await _repository.Delete(obj.ID);
-    public void Search(string searchValue) => List = (List<Teacher>)List
-        .Where(i =>
-        i.Patronymic.StartsWith(searchValue)
-        || i.Surname.StartsWith(searchValue)
-        || i.Name.StartsWith(searchValue)
-        );
+    public void Search(string searchValue) => List = (List<Teacher>)List.Where(i => i.Patronymic.StartsWith(searchValue) || i.Surname.StartsWith(searchValue) || i.Name.StartsWith(searchValue));
 }

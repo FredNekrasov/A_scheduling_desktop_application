@@ -15,8 +15,5 @@ public class UserVM : IBasicVM<User>
         List = list.ToList();
     }
     public async Task RemoveAsync(User obj) => await _repository.Delete(obj.UserID);
-    public void Search(string searchValue) => List = (List<User>)List
-        .Where(i =>
-        i.UserName.StartsWith(searchValue) || i.Password.StartsWith(searchValue) || i.Email.StartsWith(searchValue)
-        );
+    public void Search(string searchValue) => List = (List<User>)List.Where(i => i.UserName.StartsWith(searchValue) || i.Password.StartsWith(searchValue) || i.Email.StartsWith(searchValue));
 }
