@@ -6,6 +6,7 @@ using Model.validation.day;
 using SchedulingApp.viewModels.saveVMImplementation.date;
 using Model.entities;
 using SchedulingApp.viewModels.basicVMImplementation;
+using Model.entitiesForExcel;
 
 namespace SchedulingApp.view.saveData.date
 {
@@ -14,8 +15,8 @@ namespace SchedulingApp.view.saveData.date
         private readonly ISaveVM<DayEntity> _saveVM;
         private readonly IBasicVM<Week> _weeksBasicVM = new WeekVM();
         private readonly IBasicVM<PairEntity> _pairsBasicVM = new PairVM();
-        private DayEntity entity = new();
-        public DayWindow(DayEntity? selectedItem)
+        private DayData entity = new();
+        public DayWindow(DayData? selectedItem)
         {
             InitializeComponent();
             IDayOfWeekValidation dayOfWeekValidation = new CheckDayData();
@@ -37,7 +38,7 @@ namespace SchedulingApp.view.saveData.date
             PairsLV6.ItemsSource = _pairsBasicVM.List;
             PairsLV7.ItemsSource = _pairsBasicVM.List;
         }
-        private async Task<string> Save() => await _saveVM.SaveAsync(entity);
+        private async Task<string> Save(DayEntity item) => await _saveVM.SaveAsync(item);
         private void GoBackClick(object sender, RoutedEventArgs e)
         {
             ViewListWindow viewList = new();
@@ -46,7 +47,7 @@ namespace SchedulingApp.view.saveData.date
         }
         private async void SaveClick(object sender, RoutedEventArgs e)
         {
-            var result = await Save();
+            var result = await Save(GetEntity());
             if (result != "Ok")
             {
                 MessageBox.Show(result, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -54,6 +55,27 @@ namespace SchedulingApp.view.saveData.date
             }
             MessageBox.Show("Запись успешно создана", result, MessageBoxButton.OK, MessageBoxImage.Asterisk);
             GoBackClick(sender, e);
+        }
+        private DayEntity GetEntity()
+        {
+            DayEntity dayEntity = new()
+            {
+                ID = entity.ID,
+                DayOfWeek = entity.DayOfWeek,
+                Pair1 = GetID(entity.Pair1),
+                Pair2 = GetID(entity.Pair2),
+                Pair3 = GetID(entity.Pair3),
+                Pair4 = GetID(entity.Pair4),
+                Pair5 = GetID(entity.Pair5),
+                Pair6 = GetID(entity.Pair6),
+                Pair7 = GetID(entity.Pair7),
+                Week = entity.Week
+            };
+            return dayEntity;
+        }
+        private static int? GetID(PairEntity? pairEntity)
+        {
+            if (pairEntity == null) return null; else return pairEntity.PairID;
         }
     }
 }

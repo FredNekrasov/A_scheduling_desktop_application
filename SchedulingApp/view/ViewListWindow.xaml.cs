@@ -11,6 +11,7 @@ using SchedulingApp.view.saveData.date;
 using SchedulingApp.view.saveData.room;
 using SchedulingApp.view.saveData;
 using System.Windows.Controls;
+using Model.entitiesForExcel;
 
 namespace SchedulingApp.view;
 public partial class ViewListWindow : Window
@@ -24,7 +25,7 @@ public partial class ViewListWindow : Window
     private readonly IBasicVM<Semester> _semesterVM = new SemesterVM();
     private readonly IBasicVM<Week> _weekVM = new WeekVM();
     private readonly IBasicVM<PairEntity> _pairVM = new PairVM();
-    private readonly IBasicVM<DayEntity> _dayVM = new DayVM();
+    private readonly IBasicVM<DayData> _dayVM = new DayVM();
     public ViewListWindow()
     {
         InitializeComponent();
@@ -86,7 +87,7 @@ public partial class ViewListWindow : Window
     private async void DeleteSemester(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_semesterVM, ((Button)sender).DataContext as Semester);
     private async void DeleteWeek(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_weekVM, ((Button)sender).DataContext as Week);
     private async void DeletePair(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_pairVM, ((Button)sender).DataContext as PairEntity);
-    private async void DeleteDay(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_dayVM, ((Button)sender).DataContext as DayEntity);
+    private async void DeleteDay(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_dayVM, ((Button)sender).DataContext as DayData);
 
     private void OpenUserWindow(object sender, RoutedEventArgs e)
     {
@@ -144,7 +145,7 @@ public partial class ViewListWindow : Window
     }
     private void OpenDayWindow(object sender, RoutedEventArgs e)
     {
-        DayWindow dayWindow = new(((Button)sender).DataContext as DayEntity);
+        DayWindow dayWindow = new(((Button)sender).DataContext as DayData);
         Close();
         dayWindow.Show();
     }
