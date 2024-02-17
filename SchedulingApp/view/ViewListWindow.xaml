@@ -341,6 +341,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFilePair" Grid.Row="1" Grid.ColumnSpan="2"/>
                     <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenPairWindow" Grid.Row="1" Grid.Column="1"/>
                     <ListView x:Name="PairsLV" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
                         <ListView.ItemTemplate>
@@ -381,6 +382,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button Content="Назад" Style="{StaticResource NavButton}" Click="Go_back_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button Content="Excel файл" Style="{StaticResource NavButton}" Click="GenerateExcelFileDay" Grid.Row="1" Grid.ColumnSpan="2"/>
                     <Button Content="Добавить" Style="{StaticResource NavButton}" Click="OpenDayWindow" Grid.Row="1" Grid.Column="1"/>
                     <ListView x:Name="DaysLV" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
                         <ListView.ItemTemplate>
