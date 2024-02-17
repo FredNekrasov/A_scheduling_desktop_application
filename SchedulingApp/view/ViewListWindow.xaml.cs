@@ -6,13 +6,10 @@ using SchedulingApp.viewModels.basicVMImplementation.room;
 using SchedulingApp.viewModels.basicVMImplementation;
 using SchedulingApp.viewModels;
 using System.Windows;
-using SchedulingApp.converter;
 using SchedulingApp.view.saveData.date;
 using SchedulingApp.view.saveData.room;
 using SchedulingApp.view.saveData;
 using System.Windows.Controls;
-using SchedulingApp.mappers;
-using SchedulingApp.mappers.implementation;
 
 namespace SchedulingApp.view;
 public partial class ViewListWindow : Window

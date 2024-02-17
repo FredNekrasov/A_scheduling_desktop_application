@@ -404,7 +404,7 @@
                                             <RowDefinition Height="2*"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <TextBox Text="{Binding DayOfWeek}" Style="{StaticResource basicTextBox}" Grid.Row="0"/>
+                                        <TextBlock Text="{Binding DayOfWeek}" Style="{StaticResource BasicTextBlock}" Grid.Row="0"/>
                                         <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
                                             <Grid DataContext="{Binding Pair1}">
                                                 <Grid.ColumnDefinitions>

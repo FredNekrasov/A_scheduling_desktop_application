@@ -21,13 +21,4 @@ public class PairVM : IBasicVM<PairEntity>
     }
     public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
     public async Task RemoveAsync(PairEntity obj) => await _repository.Delete(obj.PairID);
-    public void Search(string searchValue) => List = (List<PairEntity>)List
-        .Where(i =>
-        i.Subject.SubjectName.StartsWith(searchValue)
-        || i.Teacher.Surname.StartsWith(searchValue)
-        || i.Teacher.Name.StartsWith(searchValue)
-        || i.Teacher.Patronymic.StartsWith(searchValue)
-        || i.Group.ShortNumber.StartsWith(searchValue)
-        || i.Audience.AudienceNumber.StartsWith(searchValue)
-        );
 }

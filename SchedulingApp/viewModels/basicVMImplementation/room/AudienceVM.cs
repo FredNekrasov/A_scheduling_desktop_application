@@ -20,13 +20,5 @@ public class AudienceVM : IBasicVM<Audience>
         if (list == null) return;
         List = list.ToList();
     }
-
     public async Task RemoveAsync(Audience obj) => await _repository.Delete(obj.ID);
-    public void Search(string searchValue) => List = (List<Audience>)List
-            .Where(i =>
-            i.SeatsNumber.ToString().StartsWith(searchValue)
-            || i.AudienceNumber.StartsWith(searchValue)
-            || i.StudentNumber.ToString().StartsWith(searchValue)
-            || i.AudienceType.TypeName.StartsWith(searchValue)
-            );
 }

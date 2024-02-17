@@ -14,12 +14,5 @@ public class SquadVM : IBasicVM<Squad>
         if (list == null) return;
         List = list.ToList();
     }
-
     public async Task RemoveAsync(Squad obj) => await _repository.Delete(obj.ID);
-    public void Search(string searchValue) => List = (List<Squad>)List
-        .Where(i =>
-        i.GroupNumber.StartsWith(searchValue)
-        || i.ShortNumber.StartsWith(searchValue)
-        || i.StudentNumber.ToString().StartsWith(searchValue)
-        );
 }

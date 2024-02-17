@@ -14,8 +14,5 @@ public class AudienceTypeVM : IBasicVM<AudienceType>
         if (list == null) return;
         List = list.ToList();
     }
-
     public async Task RemoveAsync(AudienceType obj) => await _repository.Delete(obj.ID);
-    public void Search(string searchValue) => List = (List<AudienceType>)List
-            .Where(i => i.TypeName.StartsWith(searchValue) || i.Description.StartsWith(searchValue));
 }

@@ -14,8 +14,5 @@ public class SemesterVM : IBasicVM<Semester>
         if (list == null) return;
         List = list.ToList();
     }
-
     public async Task RemoveAsync(Semester obj) => await _repository.Delete(obj.ID);
-    public void Search(string searchValue) => List = (List<Semester>)List
-            .Where(i => i.Year.ToString().StartsWith(searchValue) || i.IsEven.ToString().StartsWith(searchValue));
 }

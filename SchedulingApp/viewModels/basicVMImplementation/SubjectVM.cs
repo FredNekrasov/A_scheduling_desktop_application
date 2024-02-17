@@ -14,15 +14,5 @@ public class SubjectVM : IBasicVM<Subject>
         if (list == null) return;
         List = list.ToList();
     }
-
     public async Task RemoveAsync(Subject obj) => await _repository.Delete(obj.ID);
-    public void Search(string searchValue) => List = (List<Subject>)List
-            .Where(i =>
-            i.SubjectName == searchValue
-            || i.LectureHours.ToString().StartsWith(searchValue)
-            || i.PracticHours.ToString().StartsWith(searchValue)
-            || i.ConsultationHours.ToString().StartsWith(searchValue)
-            || i.TypeOfCertification.StartsWith(searchValue)
-            || i.TotalHours.ToString().StartsWith(searchValue)
-            );
 }
