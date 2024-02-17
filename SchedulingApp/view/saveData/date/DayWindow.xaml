@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchedulingApp.view.saveData.date"
         mc:Ignorable="d"
-        Title="DayWindow" Height="800" Width="1100">
+        Title="DayWindow" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
         
         <TextBox Text="{Binding DayOfWeek}" Width="400" Style="{StaticResource basicTextBox}" Grid.Row="1" Grid.Column="1"/>
         <ComboBox x:Name="WeekCB" Text="{Binding Week.WeekNumber}" SelectedItem="{Binding Week}" DisplayMemberPath="WeekNumber" Width="400" Style="{StaticResource BasicComboBox}" Grid.Row="2" Grid.Column="1"/>
-        <ListView x:Name="PairsLV1" SelectedItem="{Binding Pair1}" ItemsSource="{Binding PairEntity}" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="3" Grid.Column="1">
+        <ListView x:Name="PairsLV1" SelectedItem="{Binding Pair1}" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="3" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -60,7 +60,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="PairsLV2" SelectedItem="{Binding Pair2}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="4" Grid.Column="1">
+        <ListView x:Name="PairsLV2" SelectedItem="{Binding Pair2}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="4" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -83,7 +83,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="PairsLV3" SelectedItem="{Binding Pair3}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="5" Grid.Column="1">
+        <ListView x:Name="PairsLV3" SelectedItem="{Binding Pair3}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="5" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -106,7 +106,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="PairsLV4" SelectedItem="{Binding Pair4}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="6" Grid.Column="1">
+        <ListView x:Name="PairsLV4" SelectedItem="{Binding Pair4}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="6" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -129,7 +129,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="PairsLV5" SelectedItem="{Binding Pair5}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="7" Grid.Column="1">
+        <ListView x:Name="PairsLV5" SelectedItem="{Binding Pair5}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="7" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -152,7 +152,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="PairsLV6" SelectedItem="{Binding Pair6}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="8" Grid.Column="1">
+        <ListView x:Name="PairsLV6" SelectedItem="{Binding Pair6}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="8" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -175,7 +175,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="PairsLV7" SelectedItem="{Binding Pair7}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="9" Grid.Column="1">
+        <ListView x:Name="PairsLV7" SelectedItem="{Binding Pair7}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="9" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
