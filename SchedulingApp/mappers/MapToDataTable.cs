@@ -2,7 +2,7 @@
 using System.Data;
 using System.Reflection;
 
-namespace SchedulingApp.converter;
+namespace SchedulingApp.mappers;
 
 public class MapToDataTable
 {
