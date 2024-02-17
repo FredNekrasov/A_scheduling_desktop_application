@@ -16,13 +16,12 @@ namespace SchedulingApp.view.saveData.date
         private readonly IBasicVM<Week> _weeksBasicVM = new WeekVM();
         private readonly IBasicVM<PairEntity> _pairsBasicVM = new PairVM();
         private DayData entity = new();
-        public DayWindow(DayData? selectedItem)
+        public DayWindow()
         {
             InitializeComponent();
             IDayOfWeekValidation dayOfWeekValidation = new CheckDayData();
             _saveVM = new SaveDay(dayOfWeekValidation);
             SetData();
-            if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }
         private async void SetData()

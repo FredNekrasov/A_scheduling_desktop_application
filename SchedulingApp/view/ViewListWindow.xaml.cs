@@ -48,6 +48,7 @@ public partial class ViewListWindow : Window
         await _semesterVM.LoadData();
         await _weekVM.LoadData();
         await _pairVM.LoadData();
+        await _dayVM.LoadData();
         UsersDG.ItemsSource = _userVM.List;
         TeachersDG.ItemsSource = _teacherVM.List;
         SubjectsDG.ItemsSource = _subjectVM.List;
@@ -57,16 +58,18 @@ public partial class ViewListWindow : Window
         WeeksDG.ItemsSource = _weekVM.List;
         GroupsDG.ItemsSource = _groupVM.List;
         PairsLV.ItemsSource = _pairVM.List;
+        DaysLV.ItemsSource = _dayVM.List;
     }
     private static void GenerateExcelFile<T>(List<T> list)
     {
         var dataTable = MapToDataTable.ToDataTable(list);
         ExportToExcel.ToExcelFile(dataTable);
     }
-    private static async Task DeleteRecordAsync<T>(IBasicVM<T> vm, T? record)
+    private async Task DeleteRecordAsync<T>(IBasicVM<T> vm, T? record)
     {
         if (record == null) return;
         await vm.RemoveAsync(record);
+        SetList();
     }
 
     private void GenerateExcelFileUsers(object sender, RoutedEventArgs e) => GenerateExcelFile(_userVM.List.ToList());
@@ -145,7 +148,7 @@ public partial class ViewListWindow : Window
     }
     private void OpenDayWindow(object sender, RoutedEventArgs e)
     {
-        DayWindow dayWindow = new(((Button)sender).DataContext as DayData);
+        DayWindow dayWindow = new();
         Close();
         dayWindow.Show();
     }
