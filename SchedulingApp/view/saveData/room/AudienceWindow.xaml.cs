@@ -28,7 +28,6 @@ namespace SchedulingApp.view.saveData.room
             await _audienceTypesBasicVM.LoadData();
             AudiencesComboBox.ItemsSource = _audienceTypesBasicVM.List;
         }
-        private async Task<string> Save() => await _saveVM.SaveAsync(entity);
         private void GoBackClick(object sender, RoutedEventArgs e)
         {
             ViewListWindow viewList = new();
@@ -37,7 +36,7 @@ namespace SchedulingApp.view.saveData.room
         }
         private async void SaveClick(object sender, RoutedEventArgs e)
         {
-            var result = await Save();
+            var result = await _saveVM.SaveAsync(entity);
             if (result != "Ok")
             {
                 MessageBox.Show(result, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
