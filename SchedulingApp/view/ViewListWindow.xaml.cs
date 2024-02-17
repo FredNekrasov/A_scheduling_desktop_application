@@ -12,8 +12,7 @@ using SchedulingApp.view.saveData.room;
 using SchedulingApp.view.saveData;
 using System.Windows.Controls;
 using Model.entitiesForExcel;
-using Microsoft.Win32;
-using System.IO;
+using SchedulingApp.mappers;
 
 namespace SchedulingApp.view;
 public partial class ViewListWindow : Window

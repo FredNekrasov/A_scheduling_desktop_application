@@ -1,7 +1,7 @@
 ﻿using Model.entities.room;
 using Model.entitiesForExcel;
 
-namespace SchedulingApp.converter;
+namespace SchedulingApp.mappers;
 
 public class MapToAudienceXLSX
 {
