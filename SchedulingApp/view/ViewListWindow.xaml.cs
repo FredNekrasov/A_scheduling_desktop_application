@@ -12,6 +12,8 @@ using SchedulingApp.view.saveData.room;
 using SchedulingApp.view.saveData;
 using System.Windows.Controls;
 using Model.entitiesForExcel;
+using Microsoft.Win32;
+using System.IO;
 
 namespace SchedulingApp.view;
 public partial class ViewListWindow : Window
@@ -60,11 +62,7 @@ public partial class ViewListWindow : Window
         PairsLV.ItemsSource = _pairVM.List;
         DaysLV.ItemsSource = _dayVM.List;
     }
-    private static void GenerateExcelFile<T>(List<T> list)
-    {
-        var dataTable = MapToDataTable.ToDataTable(list);
-        ExportToExcel.ToExcelFile(dataTable);
-    }
+    private static void GenerateExcelFile<T>(List<T> list) => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(list));
     private async Task DeleteRecordAsync<T>(IBasicVM<T> vm, T? record)
     {
         if (record == null) return;
@@ -80,7 +78,10 @@ public partial class ViewListWindow : Window
     private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToAudienceXLSX.ToAudienceXLSXes([.. _audienceVM.List]));
     private void GenerateExcelFileSemesters(object sender, RoutedEventArgs e) => GenerateExcelFile(_semesterVM.List.ToList());
     private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes([.. _weekVM.List]));
-    private void GenerateExcelFilePair(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes([.. _weekVM.List]));
+    private void GenerateExcelFilePair(object sender, RoutedEventArgs e)
+    {
+        
+    }
     private void GenerateExcelFileDay(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes([.. _weekVM.List]));
 
     private async void DeleteUser(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_userVM, ((Button)sender).DataContext as User);

@@ -22,6 +22,7 @@ public class SaveAudience(
         bool result = _audienceNumberValidation.ValidateAudienceNumber(obj.AudienceNumber);
         if (result == false) errors.AppendLine("Введен неправильный номер аудитории");
         result = _seatsNumberValidation.ValidateSeatsNumber(obj.SeatsNumber);
+        if (obj.AudienceType == null) errors.AppendLine("Тип аудитории не выбран");
         if (result == false) errors.AppendLine("Введено неправильное количество мест в аудитории");
         result = _studentNumberValidation.ValidateStudentNumber(obj.StudentNumber);
         if (result == false) errors.AppendLine("Введено неправильное количество мест для студентов");

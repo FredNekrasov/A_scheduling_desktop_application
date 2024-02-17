@@ -14,6 +14,7 @@ public class SaveWeek(IWeekNumberValidation weekNumberValidation) : ISaveVM<Week
     {
         StringBuilder errors = new();
         bool result = _weekNumberValidation.ValidateWeekNumber(obj.WeekNumber);
+        if (obj.Semester == null) errors.AppendLine("Семестр не выбран");
         if (result == false) errors.AppendLine("Введен некорректный номер недели");
         if (errors.Length > 0) return errors.ToString();
         if (obj.ID == 0) await _repository.Create(obj); else await _repository.Update(obj, obj.ID);

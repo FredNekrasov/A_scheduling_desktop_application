@@ -15,6 +15,7 @@ public class SaveDay(IDayOfWeekValidation dayOfWeekValidation) : ISaveVM<DayEnti
         StringBuilder errors = new();
         string result = _dayValidation.ValidateDayOfWeek(obj.DayOfWeek);
         if (result == "data is empty or incorrect") errors.AppendLine(result);
+        if (obj.Week == null) errors.AppendLine("Номер недели не выбран");
         if (errors.Length > 0) return errors.ToString();
         if (obj.ID == 0) await _repository.Create(obj); else await _repository.Update(obj, obj.ID);
         return "Ok";
