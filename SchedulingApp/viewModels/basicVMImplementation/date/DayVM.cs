@@ -1,6 +1,10 @@
 ﻿using Model.entities;
 using Model.entities.date;
+using Model.entitiesForExcel;
 using Model.repositories;
+using SchedulingApp.converter;
+using SchedulingApp.mappers;
+using SchedulingApp.mappers.implementation;
 using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.date;
@@ -9,7 +13,9 @@ public class DayVM : IBasicVM<DayData>
 {
     private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("Days");
     private readonly IBasicVM<PairEntity> basicVM = new PairVM();
+    private readonly IMapToXLSX<DayXLSX, DayData> mapToXLSX = new MapToDayXLSX();
     public List<DayData> List { get; private set; }
+    public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
     public async Task LoadData()
     {
         List<DayData> days = [];
@@ -18,7 +24,6 @@ public class DayVM : IBasicVM<DayData>
         if (list == null) return;
         foreach (var item in list)
         {
-
             DayData dayData = new()
             {
                 ID = item.ID,

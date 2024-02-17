@@ -1,4 +1,5 @@
-﻿using Model.entities.date;
+﻿using Model.entities;
+using Model.entities.date;
 using Model.entitiesForExcel;
 
 namespace SchedulingApp.mappers.implementation
@@ -11,15 +12,16 @@ namespace SchedulingApp.mappers.implementation
             {
                 DayOfWeek = data.DayOfWeek,
                 WeekNumber = data.Week.WeekNumber,
-                Pair1 = data.Pair1.PairID,
-                Pair2 = data.Pair2.PairID,
-                Pair3 = data.Pair3.PairID,
-                Pair4 = data.Pair4.PairID,
-                Pair5 = data.Pair5.PairID,
-                Pair6 = data.Pair6.PairID,
-                Pair7 = data.Pair7.PairID,
+                Pair1 = GetID(data.Pair1),
+                Pair2 = GetID(data.Pair2),
+                Pair3 = GetID(data.Pair3),
+                Pair4 = GetID(data.Pair4),
+                Pair5 = GetID(data.Pair5),
+                Pair6 = GetID(data.Pair6),
+                Pair7 = GetID(data.Pair7),
             };
         }
+        private static int? GetID(PairEntity? pairEntity) => pairEntity?.PairID;
         public List<DayXLSX> ToXLSXList(List<DayData> dataList)
         {
             List<DayXLSX> list = [];

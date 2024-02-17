@@ -61,7 +61,6 @@ public partial class ViewListWindow : Window
         PairsLV.ItemsSource = _pairVM.List;
         DaysLV.ItemsSource = _dayVM.List;
     }
-    private static void GenerateExcelFile<T>(List<T> list) => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(list));
     private async Task DeleteRecordAsync<T>(IBasicVM<T> vm, T? record)
     {
         if (record == null) return;
@@ -69,16 +68,16 @@ public partial class ViewListWindow : Window
         SetList();
     }
 
-    private void GenerateExcelFileUsers(object sender, RoutedEventArgs e) => GenerateExcelFile(_userVM.List);
-    private void GenerateExcelFileTeachers(object sender, RoutedEventArgs e) => GenerateExcelFile(_teacherVM.List);
-    private void GenerateExcelFileGroups(object sender, RoutedEventArgs e) => GenerateExcelFile(_groupVM.List);
-    private void GenerateExcelFileSubjects(object sender, RoutedEventArgs e) => GenerateExcelFile(_subjectVM.List);
-    private void GenerateExcelFileAudienceTypes(object sender, RoutedEventArgs e) => GenerateExcelFile(_audienceTypeVM.List);
-    private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToAudienceXLSX.ToAudienceXLSXes(_audienceVM.List));
-    private void GenerateExcelFileSemesters(object sender, RoutedEventArgs e) => GenerateExcelFile(_semesterVM.List);
-    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToXLSXList(_weekVM.List));
-    private void GenerateExcelFilePair(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToPairXLSX.ToXLSXList(_pairVM.List));
-    private void GenerateExcelFileDay(object sender, RoutedEventArgs e) => GenerateExcelFile(_dayVM.List);
+    private void GenerateExcelFileUsers(object sender, RoutedEventArgs e) => _userVM.GenerateExcelFile();
+    private void GenerateExcelFileTeachers(object sender, RoutedEventArgs e) => _teacherVM.GenerateExcelFile();
+    private void GenerateExcelFileGroups(object sender, RoutedEventArgs e) => _groupVM.GenerateExcelFile();
+    private void GenerateExcelFileSubjects(object sender, RoutedEventArgs e) => _subjectVM.GenerateExcelFile();
+    private void GenerateExcelFileAudienceTypes(object sender, RoutedEventArgs e) => _audienceTypeVM.GenerateExcelFile();
+    private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => _audienceVM.GenerateExcelFile();
+    private void GenerateExcelFileSemesters(object sender, RoutedEventArgs e) => _semesterVM.GenerateExcelFile();
+    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => _weekVM.GenerateExcelFile();
+    private void GenerateExcelFilePair(object sender, RoutedEventArgs e) => _pairVM.GenerateExcelFile();
+    private void GenerateExcelFileDay(object sender, RoutedEventArgs e) => _dayVM.GenerateExcelFile();
 
     private async void DeleteUser(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_userVM, ((Button)sender).DataContext as User);
     private async void DeleteTeacher(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_teacherVM, ((Button)sender).DataContext as Teacher);
