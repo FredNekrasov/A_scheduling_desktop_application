@@ -5,8 +5,200 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchedulingApp.view.saveData.date"
         mc:Ignorable="d"
-        Title="DayWindow" Height="450" Width="800">
+        Title="DayWindow" Height="800" Width="1100">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Данные о дне" Style="{StaticResource basicLabel}" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="День недели" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Номер недели недели" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Первая пара" Style="{StaticResource BasicTextBlock}" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Вторая пара" Style="{StaticResource BasicTextBlock}" Grid.Row="4" Grid.Column="0"/>
+        <TextBlock Text="Третья пара" Style="{StaticResource BasicTextBlock}" Grid.Row="5" Grid.Column="0"/>
+        <TextBlock Text="Четвертая пара" Style="{StaticResource BasicTextBlock}" Grid.Row="6" Grid.Column="0"/>
+        <TextBlock Text="Пятая пара" Style="{StaticResource BasicTextBlock}" Grid.Row="7" Grid.Column="0"/>
+        <TextBlock Text="Шестая пара" Style="{StaticResource BasicTextBlock}" Grid.Row="8" Grid.Column="0"/>
+        <TextBlock Text="Седьмая пара" Style="{StaticResource BasicTextBlock}" Grid.Row="9" Grid.Column="0"/>
         
+        <TextBox Text="{Binding DayOfWeek}" Width="400" Style="{StaticResource basicTextBox}" Grid.Row="1" Grid.Column="1"/>
+        <ComboBox x:Name="WeekCB" Text="{Binding Week.WeekNumber}" SelectedItem="{Binding Week}" DisplayMemberPath="WeekNumber" Width="400" Style="{StaticResource BasicComboBox}" Grid.Row="2" Grid.Column="1"/>
+        <ListView x:Name="PairsLV1" SelectedItem="{Binding Pair1}" ItemsSource="{Binding PairEntity}" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="3" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="PairsLV2" SelectedItem="{Binding Pair2}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="4" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="PairsLV3" SelectedItem="{Binding Pair3}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="5" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="PairsLV4" SelectedItem="{Binding Pair4}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="6" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="PairsLV5" SelectedItem="{Binding Pair5}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="7" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="PairsLV6" SelectedItem="{Binding Pair6}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="8" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="PairsLV7" SelectedItem="{Binding Pair7}" ItemsSource="{Binding PairEntity}" SelectionMode="Extended" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Row="9" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding Subject.SubjectName}" Style="{StaticResource basicLabel}" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Surname}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Teacher.Name}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="{Binding Teacher.Patronymic}" Style="{StaticResource BasicTextBlock}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Group.ShortNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Audience.AudienceNumber}" Style="{StaticResource BasicTextBlock}" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Назад" Click="GoBackClick" Style="{StaticResource NavButton}" Grid.Row="10" Grid.Column="0"/>
+        <Button Content="Сохранить" Click="SaveClick" Style="{StaticResource NavButton}" Grid.Row="10" Grid.Column="1"/>
     </Grid>
 </Window>
