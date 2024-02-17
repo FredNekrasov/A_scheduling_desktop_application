@@ -1,11 +1,11 @@
 ﻿using Model.entities.room;
 using Model.entitiesForExcel;
 
-namespace SchedulingApp.mappers;
+namespace SchedulingApp.mappers.implementation;
 
-public class MapToAudienceXLSX
+public class MapToAudienceXLSX : IMapToXLSX<AudienceXLSX, Audience>
 {
-    public static AudienceXLSX ToAudienceXLSX(Audience audience)
+    public AudienceXLSX ToXLSX(Audience audience)
     {
         return new AudienceXLSX
         {
@@ -15,12 +15,12 @@ public class MapToAudienceXLSX
             StudentNumber = audience.StudentNumber
         };
     }
-    public static List<AudienceXLSX> ToAudienceXLSXes(List<Audience> audiences)
+    public List<AudienceXLSX> ToXLSXList(List<Audience> audiences)
     {
         List<AudienceXLSX> list = [];
         foreach (Audience audience in audiences)
         {
-            list.Add(ToAudienceXLSX(audience));
+            list.Add(ToXLSX(audience));
         }
         return list;
     }

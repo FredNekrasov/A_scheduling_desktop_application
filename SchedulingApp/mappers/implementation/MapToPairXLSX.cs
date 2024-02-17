@@ -1,11 +1,11 @@
 ﻿using Model.entities;
 using Model.entitiesForExcel;
 
-namespace SchedulingApp.mappers
+namespace SchedulingApp.mappers.implementation
 {
-    public class MapToPairXLSX
+    public class MapToPairXLSX : IMapToXLSX<PairXLSX, PairEntity>
     {
-        public static PairXLSX ToPairXLSX(PairEntity pair)
+        public PairXLSX ToXLSX(PairEntity pair)
         {
             return new PairXLSX
             {
@@ -16,12 +16,12 @@ namespace SchedulingApp.mappers
                 Audience = pair.Audience.AudienceNumber
             };
         }
-        public static List<PairXLSX> ToPairXLSXes(List<PairEntity> pairs)
+        public List<PairXLSX> ToXLSXList(List<PairEntity> pairs)
         {
             List<PairXLSX> list = [];
             foreach (PairEntity pair in pairs)
             {
-                list.Add(ToPairXLSX(pair));
+                list.Add(ToXLSX(pair));
             }
             return list;
         }

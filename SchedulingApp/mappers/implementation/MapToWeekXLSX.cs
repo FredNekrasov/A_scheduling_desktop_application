@@ -1,11 +1,11 @@
 ﻿using Model.entities.date;
 using Model.entitiesForExcel;
 
-namespace SchedulingApp.mappers;
+namespace SchedulingApp.mappers.implementation;
 
-public class MapToWeekXLSX
+public class MapToWeekXLSX : IMapToXLSX<WeekXLSX, Week>
 {
-    public static WeekXLSX ToWeekXLSX(Week week)
+    public WeekXLSX ToXLSX(Week week)
     {
         string semester;
         if (week.Semester.IsEven == true) semester = "1st semester"; else semester = "2ond semester";
@@ -16,12 +16,12 @@ public class MapToWeekXLSX
             Year = week.Semester.Year
         };
     }
-    public static List<WeekXLSX> ToWeekXLSXes(List<Week> weeks)
+    public List<WeekXLSX> ToXLSXList(List<Week> weeks)
     {
         List<WeekXLSX> list = [];
         foreach (Week week in weeks)
         {
-            list.Add(ToWeekXLSX(week));
+            list.Add(ToXLSX(week));
         }
         return list;
     }

@@ -10,6 +10,6 @@
         public int? Pair5 { get; set; }
         public int? Pair6 { get; set; }
         public int? Pair7 { get; set; }
-        public string WeekNumber { get; set; } = string.Empty;
+        public int WeekNumber { get; set; }
     }
 }

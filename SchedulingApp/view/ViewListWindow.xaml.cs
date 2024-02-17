@@ -12,6 +12,7 @@ using SchedulingApp.view.saveData.room;
 using SchedulingApp.view.saveData;
 using System.Windows.Controls;
 using SchedulingApp.mappers;
+using SchedulingApp.mappers.implementation;
 
 namespace SchedulingApp.view;
 public partial class ViewListWindow : Window
@@ -75,8 +76,8 @@ public partial class ViewListWindow : Window
     private void GenerateExcelFileAudienceTypes(object sender, RoutedEventArgs e) => GenerateExcelFile(_audienceTypeVM.List);
     private void GenerateExcelFileAudiences(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToAudienceXLSX.ToAudienceXLSXes(_audienceVM.List));
     private void GenerateExcelFileSemesters(object sender, RoutedEventArgs e) => GenerateExcelFile(_semesterVM.List);
-    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToWeekXLSXes(_weekVM.List));
-    private void GenerateExcelFilePair(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToPairXLSX.ToPairXLSXes(_pairVM.List));
+    private void GenerateExcelFileWeek(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToWeekXLSX.ToXLSXList(_weekVM.List));
+    private void GenerateExcelFilePair(object sender, RoutedEventArgs e) => GenerateExcelFile(MapToPairXLSX.ToXLSXList(_pairVM.List));
     private void GenerateExcelFileDay(object sender, RoutedEventArgs e) => GenerateExcelFile(_dayVM.List);
 
     private async void DeleteUser(object sender, RoutedEventArgs e) => await DeleteRecordAsync(_userVM, ((Button)sender).DataContext as User);
