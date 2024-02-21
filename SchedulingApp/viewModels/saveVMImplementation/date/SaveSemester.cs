@@ -6,17 +6,17 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.date;
 
-public class SaveSemester(IIsEvenValidation isEvenValidation, IYearValidation yearValidation) : ISaveVM<Semester>
+public class SaveSemester() : VMBase, ISaveVM<Semester>
 {
     private readonly IRepository<Semester> _repository = RepositoryModule<Semester>.GetRepository("Semesters");
-    private readonly IIsEvenValidation _isEvenValidation = isEvenValidation;
-    private readonly IYearValidation _yearValidation = yearValidation;
+    private readonly IIsEvenValidation isEvenValidation = new CheckSemesterData();
+    private readonly IYearValidation yearValidation = new CheckSemesterData();
     public async Task<string> SaveAsync(Semester obj)
     {
         StringBuilder errors = new();
-        bool result = _isEvenValidation.IsEvenValidation(obj.IsEven);
+        bool result = isEvenValidation.IsEvenValidation(obj.IsEven);
         if (result == false) errors.AppendLine("Введен неправильный номер семестра");
-        result = _yearValidation.ValidateYear(obj.Year);
+        result = yearValidation.ValidateYear(obj.Year);
         if (result == false) errors.AppendLine("Введен некорректный год семестра");
         if (errors.Length > 0) return errors.ToString();
         if (obj.ID == 0) await _repository.Create(obj); else await _repository.Update(obj, obj.ID);

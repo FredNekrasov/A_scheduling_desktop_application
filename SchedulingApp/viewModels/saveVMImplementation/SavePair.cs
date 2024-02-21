@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
-public class SavePair : ISaveVM<PairEntity>
+public class SavePair : VMBase, ISaveVM<PairEntity>
 {
     private readonly IRepository<PairEntity> _repository = RepositoryModule<PairEntity>.GetRepository("Pairs");
     public async Task<string> SaveAsync(PairEntity obj)

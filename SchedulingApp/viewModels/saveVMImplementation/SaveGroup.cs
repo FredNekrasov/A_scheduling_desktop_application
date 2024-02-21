@@ -6,16 +6,12 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
-public class SaveGroup(
-    IValidationGroupNumber validationGN,
-    IValidationShortGN validationSGN,
-    IValidationStudentNumber validationSN
-) : ISaveVM<Squad>
+public class SaveGroup() : VMBase, ISaveVM<Squad>
 {
     private readonly IRepository<Squad> _repository = RepositoryModule<Squad>.GetRepository("Groups");
-    private readonly IValidationGroupNumber validationGroupNumber = validationGN;
-    private readonly IValidationShortGN validationShortGN = validationSGN;
-    private readonly IValidationStudentNumber validationStudentNumber = validationSN;
+    private readonly IValidationGroupNumber validationGroupNumber = new CheckGroupData();
+    private readonly IValidationShortGN validationShortGN = new CheckGroupData();
+    private readonly IValidationStudentNumber validationStudentNumber = new CheckGroupData();
     public async Task<string> SaveAsync(Squad obj)
     {
         StringBuilder errors = new();

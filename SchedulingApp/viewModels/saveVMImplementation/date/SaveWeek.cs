@@ -6,14 +6,14 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.date;
 
-public class SaveWeek(IWeekNumberValidation weekNumberValidation) : ISaveVM<Week>
+public class SaveWeek() : VMBase, ISaveVM<Week>
 {
     private readonly IRepository<Week> _repository = RepositoryModule<Week>.GetRepository("Weeks");
-    private readonly IWeekNumberValidation _weekNumberValidation = weekNumberValidation;
+    private readonly IWeekNumberValidation weekNumberValidation = new CheckWeekData();
     public async Task<string> SaveAsync(Week obj)
     {
         StringBuilder errors = new();
-        bool result = _weekNumberValidation.ValidateWeekNumber(obj.WeekNumber);
+        bool result = weekNumberValidation.ValidateWeekNumber(obj.WeekNumber);
         if (obj.Semester == null) errors.AppendLine("Семестр не выбран");
         if (result == false) errors.AppendLine("Введен некорректный номер недели");
         if (errors.Length > 0) return errors.ToString();

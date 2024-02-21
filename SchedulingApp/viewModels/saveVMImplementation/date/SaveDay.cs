@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.date;
 
-public class SaveDay : ISaveVM<DayData>
+public class SaveDay : VMBase, ISaveVM<DayData>
 {
     private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("Days");
     private readonly IDayOfWeekValidation dayOfWeekValidation = new CheckDayData();
