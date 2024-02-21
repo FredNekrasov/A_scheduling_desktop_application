@@ -1,5 +1,4 @@
 ﻿using Model.entities.room;
-using Model.validation.audienceTypes;
 using SchedulingApp.viewModels.saveVMImplementation.room;
 using SchedulingApp.viewModels;
 using System.Windows;
@@ -13,9 +12,7 @@ namespace SchedulingApp.view.saveData.room
         public AudienceTypeWindow(AudienceType? selectedItem)
         {
             InitializeComponent();
-            IDescriptionValidation descriptionValidation = new CheckAudienceTypeData();
-            ITypeNameValidation typeNameValidation = new CheckAudienceTypeData();
-            _saveVM = new SaveAudienceType(typeNameValidation, descriptionValidation);
+            _saveVM = new SaveAudienceType();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }

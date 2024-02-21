@@ -1,5 +1,4 @@
 ﻿using Model.entities;
-using Model.validation.users;
 using SchedulingApp.viewModels.saveVMImplementation;
 using SchedulingApp.viewModels;
 using System.Windows;
@@ -13,10 +12,7 @@ namespace SchedulingApp.view.saveData
         public UserWindow(User? selectedItem)
         {
             InitializeComponent();
-            IValidationUserName validationUserName = new CheckUserData();
-            IValidationPassword validationPassword = new CheckUserData();
-            IValidationEmail validationEmail = new CheckUserData();
-            _saveVM = new SaveUser(validationUserName, validationPassword, validationEmail);
+            _saveVM = new SaveUser();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }

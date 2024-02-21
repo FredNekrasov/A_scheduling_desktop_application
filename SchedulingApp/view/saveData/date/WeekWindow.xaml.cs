@@ -1,5 +1,4 @@
 ﻿using Model.entities.date;
-using Model.validation.weeks;
 using SchedulingApp.viewModels;
 using SchedulingApp.viewModels.basicVMImplementation.date;
 using SchedulingApp.viewModels.saveVMImplementation.date;
@@ -16,8 +15,7 @@ namespace SchedulingApp.view.saveData.date
         {
             InitializeComponent();
             SetData();
-            IWeekNumberValidation weekNumberValidation = new CheckWeekData();
-            _saveVM = new SaveWeek(weekNumberValidation);
+            _saveVM = new SaveWeek();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }

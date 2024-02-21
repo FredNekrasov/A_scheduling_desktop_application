@@ -1,5 +1,4 @@
 ﻿using Model.entities.room;
-using Model.validation.audiences;
 using SchedulingApp.viewModels;
 using SchedulingApp.viewModels.basicVMImplementation.room;
 using SchedulingApp.viewModels.saveVMImplementation.room;
@@ -16,10 +15,7 @@ namespace SchedulingApp.view.saveData.room
         {
             InitializeComponent();
             SetData();
-            IAudienceNumberValidation audienceNumberValidation = new CheckAudienceData();
-            ISeatsNumberValidation seatsNumberValidation = new CheckAudienceData();
-            IStudentNumberValidation studentNumberValidation = new CheckAudienceData();
-            _saveVM = new SaveAudience(audienceNumberValidation, seatsNumberValidation, studentNumberValidation);
+            _saveVM = new SaveAudience();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }

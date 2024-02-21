@@ -1,5 +1,4 @@
 ﻿using Model.entities;
-using Model.validation.subjects;
 using SchedulingApp.viewModels.saveVMImplementation;
 using SchedulingApp.viewModels;
 using System.Windows;
@@ -13,20 +12,7 @@ namespace SchedulingApp.view.saveData
         public SubjectWindow(Subject? selectedItem)
         {
             InitializeComponent();
-            ISubjectNameValidation subjectNameValidation = new CheckSubjectData();
-            ILectureHoursValidation lectureHoursValidation = new CheckSubjectData();
-            IPracticeHoursValidation practiceHoursValidation = new CheckSubjectData();
-            IConsultationHoursValidation consultationHoursValidation = new CheckSubjectData();
-            ITotalHoursValidation totalHoursValidation = new CheckSubjectData();
-            ITypeOfCertificationValidation typeOfCertificationValidation = new CheckSubjectData();
-            _saveVM = new SaveSubject(
-                consultationHoursValidation,
-                lectureHoursValidation,
-                practiceHoursValidation,
-                subjectNameValidation,
-                totalHoursValidation,
-                typeOfCertificationValidation
-                );
+            _saveVM = new SaveSubject();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }

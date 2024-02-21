@@ -1,5 +1,4 @@
 ﻿using Model.entities;
-using Model.validation.teachers;
 using SchedulingApp.viewModels;
 using SchedulingApp.viewModels.saveVMImplementation;
 using System.Windows;
@@ -13,10 +12,7 @@ namespace SchedulingApp.view.saveData
         public TeacherWindow(Teacher? selectedItem)
         {
             InitializeComponent();
-            IValidationName validationName = new CheckTeacherData();
-            IValidationPatronymic validationPatronymic = new CheckTeacherData();
-            IValidationSurname validationSurname = new CheckTeacherData();
-            _saveVM = new SaveTeacher(validationName, validationPatronymic, validationSurname);
+            _saveVM = new SaveTeacher();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }

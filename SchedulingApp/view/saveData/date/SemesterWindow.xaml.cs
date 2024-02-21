@@ -1,5 +1,4 @@
 ﻿using Model.entities.date;
-using Model.validation.semesters;
 using SchedulingApp.viewModels;
 using SchedulingApp.viewModels.saveVMImplementation.date;
 using System.Windows;
@@ -13,9 +12,7 @@ namespace SchedulingApp.view.saveData.date
         public SemesterWindow(Semester? selectedItem)
         {
             InitializeComponent();
-            IIsEvenValidation isEvenValidation = new CheckSemesterData();
-            IYearValidation yearValidation = new CheckSemesterData();
-            _saveVM = new SaveSemester(isEvenValidation, yearValidation);
+            _saveVM = new SaveSemester();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }

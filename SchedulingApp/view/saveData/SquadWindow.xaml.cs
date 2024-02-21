@@ -1,5 +1,4 @@
 ﻿using Model.entities;
-using Model.validation.groups;
 using SchedulingApp.viewModels;
 using SchedulingApp.viewModels.saveVMImplementation;
 using System.Windows;
@@ -13,10 +12,7 @@ namespace SchedulingApp.view.saveData
         public SquadWindow(Squad? selectedItem)
         {
             InitializeComponent();
-            IValidationGroupNumber validationGroupNumber = new CheckGroupData();
-            IValidationShortGN validationShortGN = new CheckGroupData();
-            IValidationStudentNumber validationStudentNumber = new CheckGroupData();
-            _saveVM = new SaveGroup(validationGroupNumber, validationShortGN, validationStudentNumber);
+            _saveVM = new SaveGroup();
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }
