@@ -8,21 +8,12 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
-public class PairVM : VMBase, IBasicVM<PairEntity>
+public class PairVM : IBasicVM<PairEntity>
 {
     private readonly IRepository<PairEntity> _repository = RepositoryModule<PairEntity>.GetRepository("Pairs");
     private readonly IMapToXLSX<PairXLSX, PairEntity> mapToXLSX = new MapToPairXLSX();
-    private List<PairEntity> _list;
-    public List<PairEntity> List
-    {
-        get => _list;
-        private set
-        {
-            _list = value;
-            OnPropertyChanged(nameof(List));
-        }
-    }
-    public async void LoadData()
+    public List<PairEntity> List { get; set; }
+    public async Task LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

@@ -4,20 +4,11 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
-public class UserVM : VMBase, IBasicVM<User>
+public class UserVM : IBasicVM<User>
 {
     private readonly IRepository<User> _repository = RepositoryModule<User>.GetRepository("Users");
-    private List<User> _list;
-    public List<User> List
-    {
-        get => _list;
-        private set
-        {
-            _list = value;
-            OnPropertyChanged(nameof(List));
-        }
-    }
-    public async void LoadData()
+    public List<User> List { get; set; }
+    public async Task LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

@@ -9,26 +9,17 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.date;
 
-public class DayVM : VMBase, IBasicVM<DayData>
+public class DayVM : IBasicVM<DayData>
 {
     private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("Days");
     private readonly IBasicVM<PairEntity> basicVM = new PairVM();
     private readonly IMapToXLSX<DayXLSX, DayData> mapToXLSX = new MapToDayXLSX();
-    private List<DayData> _list;
-    public List<DayData> List
-    {
-        get => _list;
-        private set
-        {
-            _list = value;
-            OnPropertyChanged(nameof(List));
-        }
-    }
+    public List<DayData> List { get; set; }
     public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
-    public async void LoadData()
+    public async Task LoadData()
     {
         List<DayData> days = [];
-        basicVM.LoadData();
+        await basicVM.LoadData();
         var list = await _repository.Read();
         if (list == null) return;
         foreach (var item in list)

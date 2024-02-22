@@ -6,7 +6,7 @@ namespace SchedulingApp.viewModels;
 interface IBasicVM<T>
 {
     List<T> List { get; }
-    void LoadData();
+    Task LoadData();
     Task RemoveAsync(T obj);
     void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(List));
 }
