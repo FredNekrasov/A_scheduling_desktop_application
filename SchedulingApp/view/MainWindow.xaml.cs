@@ -1,4 +1,4 @@
-﻿using Model.captcha;
+﻿using SchedulingApp.stupidDI;
 using SchedulingApp.viewModels;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,13 +8,11 @@ namespace SchedulingApp.view;
 
 public partial class MainWindow : Window
 {
-    private readonly GenerateCaptcha generateCaptcha = new();
     private readonly FontFamilyConverter converter = new();
-    private readonly CapthchaVM capthchaVM;
+    private readonly CapthchaVM capthchaVM = new(CaptchaModule.GetGenerateCaptcha());
     public MainWindow()
     {
         InitializeComponent();
-        capthchaVM = new(generateCaptcha);
         SetData();
     }
     private void SetData()
