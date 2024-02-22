@@ -7,13 +7,13 @@ namespace SchedulingApp.viewModels.basicVMImplementation;
 public class UserVM : VMBase, IBasicVM<User>
 {
     private readonly IRepository<User> _repository = RepositoryModule<User>.GetRepository("Users");
-    private List<User> users;
+    private List<User> _list;
     public List<User> List
     {
-        get => users;
+        get => _list;
         private set
         {
-            users = value;
+            _list = value;
             OnPropertyChanged(nameof(List));
         }
     }

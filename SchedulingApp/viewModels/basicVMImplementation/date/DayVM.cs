@@ -14,7 +14,16 @@ public class DayVM : VMBase, IBasicVM<DayData>
     private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("Days");
     private readonly IBasicVM<PairEntity> basicVM = new PairVM();
     private readonly IMapToXLSX<DayXLSX, DayData> mapToXLSX = new MapToDayXLSX();
-    public List<DayData> List { get; private set; }
+    private List<DayData> _list;
+    public List<DayData> List
+    {
+        get => _list;
+        private set
+        {
+            _list = value;
+            OnPropertyChanged(nameof(List));
+        }
+    }
     public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
     public async void LoadData()
     {

@@ -7,7 +7,16 @@ namespace SchedulingApp.viewModels.basicVMImplementation;
 public class TeacherVM : VMBase, IBasicVM<Teacher>
 {
     private readonly IRepository<Teacher> _repository = RepositoryModule<Teacher>.GetRepository("Teachers");
-    public List<Teacher> List { get; private set; }
+    private List<Teacher> _list;
+    public List<Teacher> List
+    {
+        get => _list;
+        private set
+        {
+            _list = value;
+            OnPropertyChanged(nameof(List));
+        }
+    }
     public async void LoadData()
     {
         var list = await _repository.Read();

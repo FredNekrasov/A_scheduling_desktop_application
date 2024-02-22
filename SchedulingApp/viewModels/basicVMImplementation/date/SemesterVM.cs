@@ -1,4 +1,5 @@
-﻿using Model.entities.date;
+﻿using Model.entities;
+using Model.entities.date;
 using Model.repositories;
 using SchedulingApp.stupidDI;
 
@@ -7,7 +8,16 @@ namespace SchedulingApp.viewModels.basicVMImplementation.date;
 public class SemesterVM : VMBase, IBasicVM<Semester>
 {
     private readonly IRepository<Semester> _repository = RepositoryModule<Semester>.GetRepository("Semesters");
-    public List<Semester> List { get; private set; }
+    private List<Semester> _list;
+    public List<Semester> List
+    {
+        get => _list;
+        private set
+        {
+            _list = value;
+            OnPropertyChanged(nameof(List));
+        }
+    }
     public async void LoadData()
     {
         var list = await _repository.Read();

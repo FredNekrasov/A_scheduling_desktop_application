@@ -1,4 +1,5 @@
-﻿using Model.entities.room;
+﻿using Model.entities;
+using Model.entities.room;
 using Model.entitiesForExcel;
 using Model.repositories;
 using SchedulingApp.converter;
@@ -12,7 +13,16 @@ public class AudienceVM : VMBase, IBasicVM<Audience>
 {
     private readonly IRepository<Audience> _repository = RepositoryModule<Audience>.GetRepository("Audiences");
     private readonly IMapToXLSX<AudienceXLSX, Audience> mapToXLSX = new MapToAudienceXLSX();
-    public List<Audience> List { get; private set; }
+    private List<Audience> _list;
+    public List<Audience> List
+    {
+        get => _list;
+        private set
+        {
+            _list = value;
+            OnPropertyChanged(nameof(List));
+        }
+    }
     public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
     public async void LoadData()
     {
