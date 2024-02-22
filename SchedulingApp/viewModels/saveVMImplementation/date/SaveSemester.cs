@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.date;
 
-public class SaveSemester() : VMBase, ISaveVM<Semester>
+public class SaveSemester() : ISaveVM<Semester>
 {
     private readonly IRepository<Semester> _repository = RepositoryModule<Semester>.GetRepository("Semesters");
     private readonly IIsEvenValidation isEvenValidation = new CheckSemesterData();

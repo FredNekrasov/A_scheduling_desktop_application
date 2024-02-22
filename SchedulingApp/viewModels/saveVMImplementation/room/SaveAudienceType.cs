@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.room;
 
-public class SaveAudienceType() : VMBase, ISaveVM<AudienceType>
+public class SaveAudienceType() : ISaveVM<AudienceType>
 {
     private readonly IRepository<AudienceType> _repository = RepositoryModule<AudienceType>.GetRepository("AudienceTypes");
     private readonly IDescriptionValidation descriptionValidation = new CheckAudienceTypeData();

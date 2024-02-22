@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
-public class SaveGroup() : VMBase, ISaveVM<Squad>
+public class SaveGroup() : ISaveVM<Squad>
 {
     private readonly IRepository<Squad> _repository = RepositoryModule<Squad>.GetRepository("Groups");
     private readonly IValidationGroupNumber validationGroupNumber = new CheckGroupData();

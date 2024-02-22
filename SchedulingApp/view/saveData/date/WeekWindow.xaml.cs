@@ -19,9 +19,9 @@ namespace SchedulingApp.view.saveData.date
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }
-        private void SetData()
+        private async void SetData()
         {
-            _semestersBasicVM.LoadData();
+            await _semestersBasicVM.LoadData();
             Semester.ItemsSource = _semestersBasicVM.List;
         }
         private void GoBackClick(object sender, RoutedEventArgs e)

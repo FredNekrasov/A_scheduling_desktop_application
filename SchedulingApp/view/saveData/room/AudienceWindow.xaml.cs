@@ -19,9 +19,9 @@ namespace SchedulingApp.view.saveData.room
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }
-        private void SetData()
+        private async void SetData()
         {
-            _audienceTypesBasicVM.LoadData();
+            await _audienceTypesBasicVM.LoadData();
             AudiencesComboBox.ItemsSource = _audienceTypesBasicVM.List;
         }
         private void GoBackClick(object sender, RoutedEventArgs e)

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
-public class SaveSubject() : VMBase, ISaveVM<Subject>
+public class SaveSubject() : ISaveVM<Subject>
 {
     private readonly IRepository<Subject> _repository = RepositoryModule<Subject>.GetRepository("Subjects");
     private readonly ISubjectNameValidation subjectNameValidation = new CheckSubjectData();

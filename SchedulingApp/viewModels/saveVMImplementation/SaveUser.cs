@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation;
 
-public class SaveUser() : VMBase, ISaveVM<User>
+public class SaveUser() : ISaveVM<User>
 {
     private readonly IRepository<User> _repository = RepositoryModule<User>.GetRepository("Users");
     private readonly IValidationUserName validationUserName = new CheckUserData();

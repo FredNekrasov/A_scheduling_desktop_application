@@ -2,7 +2,6 @@
 using SchedulingApp.viewModels.basicVMImplementation.date;
 using SchedulingApp.viewModels;
 using System.Windows;
-using Model.validation.day;
 using SchedulingApp.viewModels.saveVMImplementation.date;
 using Model.entities;
 using SchedulingApp.viewModels.basicVMImplementation;
@@ -22,11 +21,11 @@ namespace SchedulingApp.view.saveData.date
             SetData();
             DataContext = entity;
         }
-        private void SetData()
+        private async void SetData()
         {
-            _weeksBasicVM.LoadData();
+            await _weeksBasicVM.LoadData();
             WeekCB.ItemsSource = _weeksBasicVM.List;
-            _pairsBasicVM.LoadData();
+            await _pairsBasicVM.LoadData();
             PairsLV1.ItemsSource = _pairsBasicVM.List;
             PairsLV2.ItemsSource = _pairsBasicVM.List;
             PairsLV3.ItemsSource = _pairsBasicVM.List;

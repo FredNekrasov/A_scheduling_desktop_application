@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchedulingApp.viewModels.saveVMImplementation.date;
 
-public class SaveWeek() : VMBase, ISaveVM<Week>
+public class SaveWeek() : ISaveVM<Week>
 {
     private readonly IRepository<Week> _repository = RepositoryModule<Week>.GetRepository("Weeks");
     private readonly IWeekNumberValidation weekNumberValidation = new CheckWeekData();
