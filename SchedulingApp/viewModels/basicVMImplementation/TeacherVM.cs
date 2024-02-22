@@ -8,7 +8,7 @@ public class TeacherVM : IBasicVM<Teacher>
 {
     private readonly IRepository<Teacher> _repository = RepositoryModule<Teacher>.GetRepository("Teachers");
     public List<Teacher> List { get; private set; }
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

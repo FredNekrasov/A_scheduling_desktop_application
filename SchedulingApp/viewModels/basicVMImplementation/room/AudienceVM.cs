@@ -14,7 +14,7 @@ public class AudienceVM : IBasicVM<Audience>
     private readonly IMapToXLSX<AudienceXLSX, Audience> mapToXLSX = new MapToAudienceXLSX();
     public List<Audience> List { get; private set; }
     public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

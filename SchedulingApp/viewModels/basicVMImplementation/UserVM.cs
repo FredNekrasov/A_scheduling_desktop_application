@@ -8,7 +8,7 @@ public class UserVM : IBasicVM<User>
 {
     private readonly IRepository<User> _repository = RepositoryModule<User>.GetRepository("Users");
     public List<User> List { get; private set; }
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

@@ -8,7 +8,7 @@ public class SquadVM : IBasicVM<Squad>
 {
     private readonly IRepository<Squad> _repository = RepositoryModule<Squad>.GetRepository("Groups");
     public List<Squad> List { get; private set; }
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

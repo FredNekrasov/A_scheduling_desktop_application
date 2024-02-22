@@ -13,7 +13,7 @@ public class PairVM : IBasicVM<PairEntity>
     private readonly IRepository<PairEntity> _repository = RepositoryModule<PairEntity>.GetRepository("Pairs");
     private readonly IMapToXLSX<PairXLSX, PairEntity> mapToXLSX = new MapToPairXLSX();
     public List<PairEntity> List { get; private set; }
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

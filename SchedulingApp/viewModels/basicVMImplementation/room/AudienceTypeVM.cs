@@ -8,7 +8,7 @@ public class AudienceTypeVM : IBasicVM<AudienceType>
 {
     private readonly IRepository<AudienceType> _repository = RepositoryModule<AudienceType>.GetRepository("AudienceTypes");
     public List<AudienceType> List { get; private set; }
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

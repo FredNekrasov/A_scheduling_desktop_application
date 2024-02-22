@@ -16,10 +16,10 @@ public class DayVM : IBasicVM<DayData>
     private readonly IMapToXLSX<DayXLSX, DayData> mapToXLSX = new MapToDayXLSX();
     public List<DayData> List { get; private set; }
     public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
-    public async Task LoadData()
+    public async void LoadData()
     {
         List<DayData> days = [];
-        await basicVM.LoadData();
+        basicVM.LoadData();
         var list = await _repository.Read();
         if (list == null) return;
         foreach (var item in list)

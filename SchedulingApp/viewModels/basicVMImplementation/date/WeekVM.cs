@@ -14,7 +14,7 @@ public class WeekVM : IBasicVM<Week>
     private readonly IMapToXLSX<WeekXLSX, Week> mapToXLSX = new MapToWeekXLSX();
     public List<Week> List { get; private set; }
     public void GenerateExcelFile() => ExportToExcel.ToExcelFile(MapToDataTable.ToDataTable(mapToXLSX.ToXLSXList(List)));
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;

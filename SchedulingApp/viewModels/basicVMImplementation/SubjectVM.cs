@@ -8,7 +8,7 @@ public class SubjectVM : IBasicVM<Subject>
 {
     private readonly IRepository<Subject> _repository = RepositoryModule<Subject>.GetRepository("Subjects");
     public List<Subject> List { get; private set; }
-    public async Task LoadData()
+    public async void LoadData()
     {
         var list = await _repository.Read();
         if (list == null) return;
