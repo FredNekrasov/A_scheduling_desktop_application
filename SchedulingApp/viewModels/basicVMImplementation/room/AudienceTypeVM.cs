@@ -4,7 +4,7 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.room;
 
-public class AudienceTypeVM : IBasicVM<AudienceType>
+public class AudienceTypeVM : VMBase, IBasicVM<AudienceType>
 {
     private readonly IRepository<AudienceType> _repository = RepositoryModule<AudienceType>.GetRepository("AudienceTypes");
     public List<AudienceType> List { get; private set; }

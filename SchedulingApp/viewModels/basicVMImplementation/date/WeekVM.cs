@@ -8,7 +8,7 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.date;
 
-public class WeekVM : IBasicVM<Week>
+public class WeekVM : VMBase, IBasicVM<Week>
 {
     private readonly IRepository<Week> _repository = RepositoryModule<Week>.GetRepository("Weeks");
     private readonly IMapToXLSX<WeekXLSX, Week> mapToXLSX = new MapToWeekXLSX();

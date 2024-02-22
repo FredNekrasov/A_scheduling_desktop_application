@@ -9,7 +9,7 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.date;
 
-public class DayVM : IBasicVM<DayData>
+public class DayVM : VMBase, IBasicVM<DayData>
 {
     private readonly IRepository<DayEntity> _repository = RepositoryModule<DayEntity>.GetRepository("Days");
     private readonly IBasicVM<PairEntity> basicVM = new PairVM();

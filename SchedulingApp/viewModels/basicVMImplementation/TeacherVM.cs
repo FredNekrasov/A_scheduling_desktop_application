@@ -4,7 +4,7 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
-public class TeacherVM : IBasicVM<Teacher>
+public class TeacherVM : VMBase, IBasicVM<Teacher>
 {
     private readonly IRepository<Teacher> _repository = RepositoryModule<Teacher>.GetRepository("Teachers");
     public List<Teacher> List { get; private set; }

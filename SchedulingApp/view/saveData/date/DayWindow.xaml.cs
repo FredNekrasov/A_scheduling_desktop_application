@@ -22,11 +22,11 @@ namespace SchedulingApp.view.saveData.date
             SetData();
             DataContext = entity;
         }
-        private async void SetData()
+        private void SetData()
         {
-            await _weeksBasicVM.LoadData();
+            _weeksBasicVM.LoadData();
             WeekCB.ItemsSource = _weeksBasicVM.List;
-            await _pairsBasicVM.LoadData();
+            _pairsBasicVM.LoadData();
             PairsLV1.ItemsSource = _pairsBasicVM.List;
             PairsLV2.ItemsSource = _pairsBasicVM.List;
             PairsLV3.ItemsSource = _pairsBasicVM.List;

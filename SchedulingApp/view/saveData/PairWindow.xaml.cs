@@ -23,12 +23,12 @@ namespace SchedulingApp.view.saveData
             if (selectedItem != null) entity = selectedItem;
             DataContext = entity;
         }
-        private async void SetData()
+        private void SetData()
         {
-            await _subjectsBasicVM.LoadData();
-            await _teachersBasicVM.LoadData();
-            await _squadsBasicVM.LoadData();
-            await _audienceBasicVM.LoadData();
+            _subjectsBasicVM.LoadData();
+            _teachersBasicVM.LoadData();
+            _squadsBasicVM.LoadData();
+            _audienceBasicVM.LoadData();
             SubjectCB.ItemsSource = _subjectsBasicVM.List;
             TeacherCB.ItemsSource = _teachersBasicVM.List;
             GroupCB.ItemsSource = _squadsBasicVM.List;

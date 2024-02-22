@@ -8,7 +8,7 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation.room;
 
-public class AudienceVM : IBasicVM<Audience>
+public class AudienceVM : VMBase, IBasicVM<Audience>
 {
     private readonly IRepository<Audience> _repository = RepositoryModule<Audience>.GetRepository("Audiences");
     private readonly IMapToXLSX<AudienceXLSX, Audience> mapToXLSX = new MapToAudienceXLSX();

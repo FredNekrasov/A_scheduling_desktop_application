@@ -8,7 +8,7 @@ using SchedulingApp.stupidDI;
 
 namespace SchedulingApp.viewModels.basicVMImplementation;
 
-public class PairVM : IBasicVM<PairEntity>
+public class PairVM : VMBase, IBasicVM<PairEntity>
 {
     private readonly IRepository<PairEntity> _repository = RepositoryModule<PairEntity>.GetRepository("Pairs");
     private readonly IMapToXLSX<PairXLSX, PairEntity> mapToXLSX = new MapToPairXLSX();
