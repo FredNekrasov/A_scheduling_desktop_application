@@ -1,5 +1,6 @@
 ﻿using SchedulingApp.stupidDI;
 using SchedulingApp.viewModels;
+using System.Net.NetworkInformation;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -40,6 +41,11 @@ public partial class MainWindow : Window
         {
             MessageBox.Show("Данные неправильные", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             ReCreateCaptcha();
+            return;
+        }
+        if (NetworkInterface.GetIsNetworkAvailable() == false)
+        {
+            MessageBox.Show("Нет доступа в интернет", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
         MessageBox.Show("Это правильно! Вы успешно прошли", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
