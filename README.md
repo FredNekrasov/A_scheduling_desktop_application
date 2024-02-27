@@ -28,7 +28,7 @@ Scheduling application - desktop C# WPF приложение для состав
 3. Microsoft.Office.Interop.Excel: для создания и обработки Excel файлов в составе приложения.
 4. MahApps.Metro.IconPacks.Material: для использования красочных иконок и улучшения пользовательского интерфейса.
 
-<details><summary><h3><b>Изображения</b></h3></summary>
+<details><summary><b>Изображения</b></summary>
 
 ### Капча
 ![image](https://github.com/FredNekrasov/A_scheduling_desktop_application/assets/152185797/ade6c56a-c74f-4e40-8628-e33b5419a739)
@@ -61,7 +61,7 @@ Scheduling application - desktop C# WPF приложение для состав
 ![image](https://github.com/FredNekrasov/A_scheduling_desktop_application/assets/152185797/f090ee94-b8c6-4a0f-a6ee-1bb50e616db4)
 </details>
 
-<details><summary><h3><b>Тесты:</b></h3></summary>
+<details><summary><b>Тесты:</b></summary>
 
 1. **Общая функциональность:**
    - [X] Загрузка приложения без ошибок
